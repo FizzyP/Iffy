@@ -12,13 +12,17 @@ namespace IffySharp
 {
     abstract class Cause
     {
-        ISet<Cause> dependencies = new SortedSet<Cause>();
-        ISet<Cause> dependents = new SortedSet<Cause>();
+        //  Override this to determine the behavior of your Cause
+        abstract public void onUpdate();
+
+        //  Up and down branches in dependency tree.
+        private ISet<Cause> dependencies = new SortedSet<Cause>();
+        private ISet<Cause> dependents = new SortedSet<Cause>();
 
         //  Tagging for tree traversal algorithms
-        public UInt64 traversalTag = 0;
+        private UInt64 traversalTag = 0;
         private static UInt64 freeTag = 1;
-        public UInt64 getFreeTag() {
+        private UInt64 getFreeTag() {
             return freeTag++;
         }
 
@@ -51,9 +55,6 @@ namespace IffySharp
                 return isDirty;
             }
         }
-
-        //  Override this to determine the behavior of your Cause
-        abstract public void onUpdate();
         
         public void update()
         {
@@ -68,6 +69,7 @@ namespace IffySharp
 
             //  Do whatever we're overriden to do
             onUpdate();
+            IsDirty = false;
 
             //  Update every cause that depends on us:
             //  First mark them all dirty
@@ -89,6 +91,7 @@ namespace IffySharp
                 throw new CircularDependencyException("", this, cause);
 
             dependencies.Add(cause);
+            cause.dependents.Add(this);
             if (cause.IsDirty)
                 IsDirty = true;
         }
@@ -96,23 +99,18 @@ namespace IffySharp
         public void removeDependency(Cause cause)
         {
             dependencies.Remove(cause);
+            cause.dependents.Remove(this);
         }
 
-        public void addDependent(Cause cause)
-        {
-            //  Check for circular dependencies
-            if (this.isDependentOn(cause))
-                throw new CircularDependencyException("", cause, this);
+        //public void addDependent(Cause cause)
+        //{
+        //    cause.addDependency(this);
+        //}
 
-            dependents.Add(cause);
-            if (IsDirty)
-                cause.IsDirty = true;
-        }
-
-        public void removeDependent(Cause cause)
-        {
-            dependents.Remove(cause);
-        }
+        //public void removeDependent(Cause cause)
+        //{
+        //    cause.removeDependency(this);
+        //}
 
         private bool isDependentOn(Cause otherCause)
         {

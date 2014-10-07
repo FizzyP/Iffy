@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using IffySharp.Test;
+using IffySharp.Causes.Tests;
 
-namespace IffyPlayer
+namespace IffySharp.Test
 {
-    class Program
+    public class IffyTest
     {
-        static void Main(string[] args)
+        public static void test()
         {
-            IffyTest.test();
+            CauseTest.test();
         }
     }
 }

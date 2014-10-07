@@ -13,7 +13,7 @@ namespace IffySharp
             _value = initialValue;
         }
 
-        private T _value;
+        protected T _value;
         public T Value
         {
             set

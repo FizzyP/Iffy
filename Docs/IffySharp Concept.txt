@@ -13,3 +13,12 @@ GOALS
 +	Mad-Libs style user content creation: if you build something in game you get to help describe it!
 
 
+
+COMPONENTS
+
+User Input Parser/Rewriter
+Event Generation
+Event and Dependency Resolution
+Mad-Libs Engine
+State Persistence
+
