@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using IffySharp.Causes.Tests;
+using IffySharp.Tests;
 
 namespace IffySharp.Test
 {
