@@ -1,0 +1,15 @@
+
+
+ IffySharp
+-----------
+
+Interactive Fiction platform in C#.  Eventually maybe we'll have a compiler generates C# targeting the library.
+
+
+GOALS
+
++	Sandbox experience with powerful simulation.
++	Accept (more) complicated expressive sentences from user.
++	Mad-Libs style user content creation: if you build something in game you get to help describe it!
+
+
