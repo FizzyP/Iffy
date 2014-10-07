@@ -10,19 +10,22 @@ using IffySharp.Utilities;
 
 namespace IffySharp
 {
+    [Serializable]
     abstract class Cause
     {
         //  Override this to determine the behavior of your Cause
         abstract public void onUpdate();
 
         //  Up and down branches in dependency tree.
-        private ISet<Cause> dependencies = new SortedSet<Cause>();
-        private ISet<Cause> dependents = new SortedSet<Cause>();
+        private SortedSet<Cause> dependencies = new SortedSet<Cause>();
+        private SortedSet<Cause> dependents = new SortedSet<Cause>();
 
         //  Tagging for tree traversal algorithms
+        [NonSerialized]
         private UInt64 traversalTag = 0;
+
         private static UInt64 freeTag = 1;
-        private UInt64 getFreeTag() {
+        private static UInt64 getFreeTag() {
             return freeTag++;
         }
 
@@ -101,16 +104,6 @@ namespace IffySharp
             dependencies.Remove(cause);
             cause.dependents.Remove(this);
         }
-
-        //public void addDependent(Cause cause)
-        //{
-        //    cause.addDependency(this);
-        //}
-
-        //public void removeDependent(Cause cause)
-        //{
-        //    cause.removeDependency(this);
-        //}
 
         private bool isDependentOn(Cause otherCause)
         {
