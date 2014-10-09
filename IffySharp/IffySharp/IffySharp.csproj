@@ -39,11 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Simulation\Cause.cs" />
+    <Compile Include="Simulation\Causes\BinOpCause.cs" />
+    <Compile Include="Simulation\Blocks\Block.cs" />
+    <Compile Include="Simulation\Causes\Cause.cs" />
+    <Compile Include="Simulation\Causes\FunctionCause.cs" />
+    <Compile Include="Simulation\Causes\RValueCause.cs" />
     <Compile Include="Simulation\Tests\CauseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Simulation\TimeCause.cs" />
-    <Compile Include="Simulation\ValueCause.cs" />
+    <Compile Include="Simulation\Causes\TimeCause.cs" />
+    <Compile Include="Simulation\Causes\ValueCause.cs" />
     <Compile Include="Test\IffyTest.cs" />
     <Compile Include="Utilities\CircularDependencyException.cs" />
   </ItemGroup>

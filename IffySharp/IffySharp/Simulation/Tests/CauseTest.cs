@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using IffySharp.Simulation;
+
 namespace IffySharp.Tests
 {
     class CauseTest
@@ -15,27 +17,24 @@ namespace IffySharp.Tests
 
             Console.WriteLine("vcc.Value = " + vcc.Value);
             vc.Value = 2.718281828;
+            Console.WriteLine("vc.Value = " + vc.Value);
             Console.WriteLine("vcc.Value = " + vcc.Value);
+
+            var vc2 = new ValueCause<double>(-1.718281828);
+            var sumCause = new BinOpCause<double>((double x, double y) => { return x + y; }, vc, vc2);
+            Console.WriteLine("vc2 = " + vc2.Value);
+            Console.WriteLine("sum of vc2 and vc = " + sumCause.Value);
         }
 
 
-        class ValueCloneCause : Cause
+        class ValueCloneCause : ValueCause<double>
         {
             ValueCause<double> cloneMe;
 
-            double _value;
-            public double Value
-            {
-                get
-                {
-                    return _value;
-                }
-            }
-
             public ValueCloneCause(ValueCause<double> cloneMe)
+                : base(cloneMe.Value)
             {
                 this.cloneMe = cloneMe;
-                this._value = cloneMe.Value;
 
                 //  Get an update when cloneMe changes.
                 this.addDependency(cloneMe);

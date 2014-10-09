@@ -19,6 +19,43 @@ COMPONENTS
 User Input Parser/Rewriter
 Event Generation
 Event and Dependency Resolution
+3D Simulation
+"Room" description engine.
 Mad-Libs Engine
 State Persistence
 
+
+
+
+
+User Input Parser/Rewriter
+Event Generation
+Event and Dependency Resolution
+
+
+3D SIMULATION
+
++	World divided into blocks.  Vertically run-line compressed.
++	Each block ~2m cubed.
++	3 x 3 x 3 area considered "reachable" (including air and ground)
++	Step = move one block
++	Walk = move three blocks
++	Properties of blocks expressed as value causes.
++	Properties of blocks stored in dictionaries
++	Most blocks "asleep" and have no dependencies on antyhing.
++	Before a block is first modified it's neighbors are "woken up" by adding its dependencies to
+	neighboring blocks.
+	(Note: this is just a trick to make runline compression work.)
+
+
+ROOM DESCRIPTION ENGINE
+
++	Templatized descriptions for each block.  Many nearby blocks use the same description.
++	Optional description of objects in 3x3x3 region.
++	Optional description of nearby regions
+
+
+MAD-LIBS ENGINE
+
+
+STATE PERSISTENCE

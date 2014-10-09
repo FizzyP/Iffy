@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 using IffySharp.Utilities;
 
-namespace IffySharp
+namespace IffySharp.Simulation
 {
     [Serializable]
     abstract class Cause
@@ -17,15 +17,20 @@ namespace IffySharp
         abstract public void onUpdate();
 
         //  Up and down branches in dependency tree.
-        private SortedSet<Cause> dependencies = new SortedSet<Cause>();
-        private SortedSet<Cause> dependents = new SortedSet<Cause>();
+        private HashSet<Cause> dependencies = new HashSet<Cause>();
+        private HashSet<Cause> dependents = new HashSet<Cause>();
+
+        //private SortedSet<Cause> dependencies = new SortedSet<Cause>();
+        //private SortedSet<Cause> dependents = new SortedSet<Cause>();
+
 
         //  Tagging for tree traversal algorithms
         [NonSerialized]
         private UInt64 traversalTag = 0;
 
         private static UInt64 freeTag = 1;
-        private static UInt64 getFreeTag() {
+        private static UInt64 getFreeTag()
+        {
             return freeTag++;
         }
 
@@ -58,8 +63,8 @@ namespace IffySharp
                 return isDirty;
             }
         }
-        
-        public void update()
+
+        protected void update()
         {
             if (!IsDirty)
                 return;

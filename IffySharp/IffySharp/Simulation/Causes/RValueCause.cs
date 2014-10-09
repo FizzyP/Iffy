@@ -4,27 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IffySharp
+namespace IffySharp.Simulation
 {
-    class ValueCause<T> : Cause
+    class RValueCause<T> : Cause
     {
-        public ValueCause(T initialValue)
+        public RValueCause(T initialValue)
         {
             _value = initialValue;
+            IsDirty = false;
+        }
+
+        public RValueCause()
+        {
+            IsDirty = true;
         }
 
         protected T _value;
+
+        virtual
         public T Value
         {
-            set
-            {
-                _value = value;
-                IsDirty = true;
-                update();
-            }
             get
             {
+                update();
                 return _value;
+            }
+            set
+            {
+                //  Does nothing at all
             }
         }
 
