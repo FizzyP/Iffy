@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//
+//  Read-Only Value Cause
+//
+
 namespace IffySharp.Simulation
 {
     class RValueCause<T> : Cause

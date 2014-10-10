@@ -35,9 +35,9 @@ namespace IffySharp.Tests
                 : base(cloneMe.Value)
             {
                 this.cloneMe = cloneMe;
-
                 //  Get an update when cloneMe changes.
                 this.addDependency(cloneMe);
+                this.update();
             }
 
             public override void onUpdate()

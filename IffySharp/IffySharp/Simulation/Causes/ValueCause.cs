@@ -18,26 +18,19 @@ namespace IffySharp.Simulation
         {
         }
 
-        protected T _value;
-
         override
         public T Value
         {
-            //set
-            //{
-            //    _value = value;
-            //    IsDirty = true;
-            //}
+            set
+            {
+                _value = value;
+                IsDirty = true;
+            }
             get
             {
                 update();
                 return _value;
             }
-        }
-
-        public override void onUpdate()
-        {
-            //  Do nothing
         }
 
         public static implicit operator ValueCause<T>(T t)

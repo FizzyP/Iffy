@@ -38,14 +38,23 @@ Event and Dependency Resolution
 +	World divided into blocks.  Vertically run-line compressed.
 +	Each block ~2m cubed.
 +	3 x 3 x 3 area considered "reachable" (including air and ground)
-+	Step = move one block
-+	Walk = move three blocks
 +	Properties of blocks expressed as value causes.
 +	Properties of blocks stored in dictionaries
 +	Most blocks "asleep" and have no dependencies on antyhing.
 +	Before a block is first modified it's neighbors are "woken up" by adding its dependencies to
 	neighboring blocks.
 	(Note: this is just a trick to make runline compression work.)
+
++	Step = move one block
++	Walk = move three blocks
+
++	Simulation works by updating state of objects.
++	Controls and properties are implemented as Causes.
++	Major objects include: Time, Weather, Light, Sound, Map, Player, Block
++	Maps made of blocks, blocks bundle Weather, Light, and Sound with them.
++	Games manipulate the simulation by invoking Causes on accessible objects.
++	The "Renderer" composes descriptions by fetching templatized strings
+	from Causes in relevant objects.
 
 
 ROOM DESCRIPTION ENGINE
@@ -59,3 +68,5 @@ MAD-LIBS ENGINE
 
 
 STATE PERSISTENCE
+
++	Serializable IF instance.
