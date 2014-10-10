@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.W
 
 namespace IffySharp.Simulation.Aspects
 {
 
-    public class MapLocation
+    public class MapLocationState
     {
-        public int x, y, z;
-        public int 
+        IntVector3 position;
+        Vector3 velocity;
     }
 
-    class MapLocationCause : FunctionCause<MapLocation>
+    class MapLocationCause : ValueCause<MapLocationState>
     {
-        public MapLocationCause(FunctionCauseGetter<MapLocation> function)
-            : base(function)
+        public MapLocationCause(MapLocationState initialLocation)
+            : base(initialLocation)
         { }
     }
 
@@ -25,9 +24,9 @@ namespace IffySharp.Simulation.Aspects
     {
         public static readonly Object kMapLocationKey = new Object();
 
-        public static WorldObjectBase imbue(WorldObjectBase obj,  FunctionCauseGetter<MapLocation> function)
+        public static WorldObjectBase imbue(WorldObjectBase obj,  MapLocationState initialState)
         {
-            obj[kMapLocationKey] = new MapLocationCause(function);
+            obj[kMapLocationKey] = new MapLocationCause(initialState);
             return obj;
         }
     }
