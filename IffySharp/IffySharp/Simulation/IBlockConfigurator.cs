@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace IffySharp.Simulation
 {
-    class SpaceTime : WorldObjectBase
+    interface IBlockConfigurator
     {
-
+        void configure(WorldBlock block, IWorldMap map);
     }
 }

@@ -44,6 +44,8 @@
     <Compile Include="Simulation\Causes\Cause.cs" />
     <Compile Include="Simulation\Causes\FunctionCause.cs" />
     <Compile Include="Simulation\Causes\RValueCause.cs" />
+    <Compile Include="Simulation\ConstantBlockConfigurator.cs" />
+    <Compile Include="Simulation\IBlockConfigurator.cs" />
     <Compile Include="Simulation\IWorldMap.cs" />
     <Compile Include="Simulation\SpaceTime.cs" />
     <Compile Include="Simulation\Tests\CauseTest.cs" />
@@ -52,7 +54,7 @@
     <Compile Include="Simulation\Causes\ValueCause.cs" />
     <Compile Include="Simulation\Utils\Vector3.cs" />
     <Compile Include="Simulation\WorldBlock.cs" />
-    <Compile Include="Simulation\WorldMap.cs" />
+    <Compile Include="Simulation\WorldMapArray.cs" />
     <Compile Include="Simulation\WorldObject.cs" />
     <Compile Include="Simulation\WorldState.cs" />
     <Compile Include="Test\IffyTest.cs" />

@@ -6,12 +6,19 @@ using System.Threading.Tasks;
 
 namespace IffySharp.Simulation
 {
-    class Vector3
+    public class Vector3
     {
         public double x, y, z;
+
+        public Vector3(double xx, double yy, double zz)
+        {
+            x = xx;
+            y = yy;
+            z = zz;
+        }
     }
 
-    class IntVector3
+    public class IntVector3
     {
         public int x, y, z;
 
