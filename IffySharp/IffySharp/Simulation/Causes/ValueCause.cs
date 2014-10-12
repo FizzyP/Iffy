@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IffySharp.Simulation
 {
-    class ValueCause<T> : RValueCause<T>
+    public class ValueCause<T> : RValueCause<T>
     {
         public ValueCause(T initialValue)
             : base(initialValue)

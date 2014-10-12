@@ -13,6 +13,19 @@ namespace IffyPlayer
         static void Main(string[] args)
         {
             IffyTest.test();
+
+			Console.WriteLine ();
+			Console.WriteLine ("################################################");
+			Console.WriteLine ();
+
+			var tt = new TempTerm ();
+			tt.termLoop ();
+
+			Console.WriteLine ();
+			Console.WriteLine ("################################################");
+			Console.WriteLine ();
+			Console.WriteLine ("Iffy says goodbye!");
+			Console.WriteLine ();
         }
     }
 }

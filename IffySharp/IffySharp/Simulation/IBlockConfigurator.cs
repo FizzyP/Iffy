@@ -8,6 +8,6 @@ namespace IffySharp.Simulation
 {
     interface IBlockConfigurator
     {
-        void configure(WorldBlock block, IWorldMap map);
+        void configure(WorldBlock block, World world);
     }
 }

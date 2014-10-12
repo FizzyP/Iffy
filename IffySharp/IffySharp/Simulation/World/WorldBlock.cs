@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IffySharp.Simulation
 {
-    class WorldBlock : WorldObjectBase
+    public class WorldBlock : WorldObjectBase
     {
     }
 }

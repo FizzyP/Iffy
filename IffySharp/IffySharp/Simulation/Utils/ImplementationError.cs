@@ -2,7 +2,7 @@
 
 namespace IffySharp
 {
-	public class ImplementationError
+	public class ImplementationError : Exception
 	{
 		public ImplementationError ()
 		{

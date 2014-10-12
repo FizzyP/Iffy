@@ -1,12 +1,13 @@
 ﻿using System;
 
-namespace IffySharp
+namespace IffySharp.Simulation
 {
-	public class Player
+	public class Player : WorldObjectBase
 	{
 		public Player ()
 		{
 		}
+
 	}
 }
 

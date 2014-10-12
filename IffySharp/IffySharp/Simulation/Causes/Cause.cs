@@ -11,7 +11,7 @@ using IffySharp.Utilities;
 namespace IffySharp.Simulation
 {
     [Serializable]
-    abstract class Cause
+    public abstract class Cause
     {
         //  Override this to determine the behavior of your Cause
         abstract public void onUpdate();
@@ -35,7 +35,7 @@ namespace IffySharp.Simulation
         }
 
         //  IsDirty keeps track of whether this Cause needs to be updated.
-        private bool isDirty = true;
+        private bool _isDirty = true;
         public bool IsDirty
         {
             set
@@ -44,27 +44,50 @@ namespace IffySharp.Simulation
                 //  Enforce the invariant that if I am dirty so are all of my dependents and their dependents and their...
 
                 //  Optimization
-                if (value == isDirty)
+                if (value == _isDirty)
                     return;
 
-                isDirty = value;
+                _isDirty = value;
 
                 //  Enforce invariant
-                if (isDirty)
+                if (_isDirty)
                 {
+					//	Mark them all dirty instantaneously so that if calling _is
+					foreach (Cause cause in dependents)
+						_isDirty = true;
                     foreach (Cause cause in dependents)
-                    {
                         cause.IsDirty = true;
-                    }
                 }
+
+				if (value && !IsLazy) {
+					update ();
+				}
+
             }
             get
             {
-                return isDirty;
+                return _isDirty;
             }
         }
 
-        protected void update()
+        //  If !isLazy then marking an object dirty causes it to immediately update
+        private bool _isLazy = true;
+        public bool IsLazy
+        {
+            set
+            {
+                _isLazy = value;
+                //  If we're not lazy but dirty, immediately fix this problem
+                if (!_isLazy && _isDirty)
+                    update();
+            }
+            get
+            {
+                return _isLazy;
+            }
+        }
+
+        public void update()
         {
             if (!IsDirty)
                 return;

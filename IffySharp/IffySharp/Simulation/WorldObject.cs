@@ -8,7 +8,7 @@ namespace IffySharp.Simulation
 {
     class IFKV : Dictionary<Object, Object> { }
 
-    class WorldObjectBase
+    public class WorldObjectBase
     {
         private readonly IFKV attributes = new IFKV();
 
@@ -29,6 +29,11 @@ namespace IffySharp.Simulation
         {
             return (T) this[key];
         }
+
+		public bool hasAttribute(Object key)
+		{
+			return attributes.ContainsKey (key);
+		}
 
     }
 }

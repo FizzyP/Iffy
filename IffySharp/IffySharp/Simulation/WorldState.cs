@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace IffySharp.Simulation
 {
     [Serializable]
-    class WorldState
+    public class WorldState
     {
-        private List<SpaceTime> planes;
+        private List<World> worlds;
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace IffySharp.Simulation
 {
-    class RValueCause<T> : Cause
+    public class RValueCause<T> : Cause
     {
         public RValueCause(T initialValue)
         {

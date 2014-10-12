@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IffySharp.Simulation
 {
-    class TimeCause : ValueCause<DateTime>
+    public class TimeCause : ValueCause<DateTime>
     {
 		public DateTime Time
         {
@@ -14,11 +14,11 @@ namespace IffySharp.Simulation
             get { return Value; }
         }
 
-		public advanceTime(double dtSeconds)
+		public void advanceTime(double dtSeconds)
 		{
 			DateTime time = Time;
 			time.AddSeconds(dtSeconds);
-			Time = time;
+			Time = time;	//	trigger the cause
 		}
 
 		public TimeCause(DateTime startTime)

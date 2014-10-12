@@ -38,6 +38,13 @@ namespace IffySharp.Simulation.Aspects
             obj[kMapLocationKey] = new MapLocationCause(initialState);
             return obj;
         }
-    
+
+		public static MapLocationState getMapLocationState(WorldObjectBase obj)
+		{
+			if (!obj.hasAttribute (kMapLocationKey))
+				return null;
+			else
+				return (MapLocationState) obj [kMapLocationKey];
+		}
     }
 }
