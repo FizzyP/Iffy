@@ -17,8 +17,9 @@ namespace IffySharp.Simulation
 	public class SoundCause : ValueCause<SoundEventData>
 	{
 		public SoundCause ()
+			: base (SoundEventData.Silence)
 		{
-			Value = SoundEventData.Silence;
+//			Value = SoundEventData.Silence;
 		}
 	}
 }

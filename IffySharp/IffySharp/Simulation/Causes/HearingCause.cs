@@ -17,6 +17,8 @@ namespace IffySharp.Simulation
 		{
 			worldSoundCause = worldSound;
 			this.addDependency (worldSoundCause);
+			IsLazy = false;
+			IsDirty = false;
 		}
 
 		override

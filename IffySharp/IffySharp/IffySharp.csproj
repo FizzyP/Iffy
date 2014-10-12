@@ -67,6 +67,7 @@
     <Compile Include="Exceptions\CircularDependencyException.cs" />
     <Compile Include="Simulation\Aspects\HearingAspect.cs" />
     <Compile Include="Simulation\Causes\HearingCause.cs" />
+    <Compile Include="Simulation\Causes\Temp\EchoHearingCause.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -83,5 +84,6 @@
     <Folder Include="Simulation\World\" />
     <Folder Include="Temp Parser\" />
     <Folder Include="Simulation\World\Tests\" />
+    <Folder Include="Simulation\Causes\Temp\" />
   </ItemGroup>
 </Project>
