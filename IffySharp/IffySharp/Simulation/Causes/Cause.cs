@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using System.Collections.Generic;
-
 using IffySharp.Utilities;
 
 namespace IffySharp.Simulation
@@ -111,14 +109,7 @@ namespace IffySharp.Simulation
             //  Update every cause that depends on us:
             //  First mark them all dirty
             foreach (Cause cause in dependents)
-            {
                 cause.IsDirty = true;
-            }
-//            //  Update them all
-//            foreach (Cause cause in dependents)
-//            {
-//                cause.update();
-//            }
         }
 
         public void addDependency(Cause cause)
