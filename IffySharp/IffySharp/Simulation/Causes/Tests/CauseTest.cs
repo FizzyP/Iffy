@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using IffySharp.Simulation;
 
-namespace IffySharp.Tests
+namespace IffySharp.Simulation.Test
 {
     class CauseTest
     {

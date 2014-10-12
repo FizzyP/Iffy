@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using IffySharp.Tests;
+using IffySharp.Simulation.Test;
+
 
 namespace IffySharp.Test
 {
@@ -12,7 +13,8 @@ namespace IffySharp.Test
     {
         public static void test()
         {
-            CauseTest.test();
+			CauseTest.test ();
+			WorldTest.test();
         }
     }
 }

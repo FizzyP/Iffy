@@ -51,7 +51,6 @@
     <Compile Include="Simulation\WorldObject.cs" />
     <Compile Include="Simulation\WorldState.cs" />
     <Compile Include="Test\IffyTest.cs" />
-    <Compile Include="Utilities\CircularDependencyException.cs" />
     <Compile Include="Simulation\Player\Player.cs" />
     <Compile Include="Simulation\Renderer\IIffyRenderer.cs" />
     <Compile Include="Simulation\Simulation.cs" />
@@ -65,6 +64,8 @@
     <Compile Include="Simulation\Causes\Tests\CauseTest.cs" />
     <Compile Include="Simulation\World\Tests\WorldTest.cs" />
     <Compile Include="Simulation\World\AbstractBlockConfigurator.cs" />
+    <Compile Include="Exceptions\CircularDependencyException.cs" />
+    <Compile Include="Simulation\Aspects\HearingAspect.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

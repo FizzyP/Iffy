@@ -9,6 +9,7 @@ namespace IffySharp.Simulation.Aspects
 
     public class MapLocationState
     {
+		public World world;
         public IntVector3 position;
         public Vector3 velocity;
     }
@@ -30,11 +31,13 @@ namespace IffySharp.Simulation.Aspects
             return obj;
         }
 
-        public static WorldObjectBase imbue(WorldObjectBase obj, IntVector3 gridPosition)
+		public static WorldObjectBase imbue(WorldObjectBase obj, IntVector3 gridPosition, World world)
         {
             var initialState = new MapLocationState();
             initialState.position = gridPosition;
             initialState.velocity = new Vector3(0,0,0);
+			initialState.world = world;
+
             obj[kMapLocationKey] = new MapLocationCause(initialState);
             return obj;
         }
@@ -44,7 +47,7 @@ namespace IffySharp.Simulation.Aspects
 			if (!obj.hasAttribute (kMapLocationKey))
 				return null;
 			else
-				return (MapLocationState) obj [kMapLocationKey];
+				return ((MapLocationCause) obj [kMapLocationKey]).Value;
 		}
     }
 }
