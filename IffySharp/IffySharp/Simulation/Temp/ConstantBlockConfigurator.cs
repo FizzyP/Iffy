@@ -8,9 +8,10 @@ using IffySharp.Simulation.Aspects;
 
 namespace IffySharp.Simulation
 {
-    abstract class ConstantBlockConfigurator
+	class ConstantBlockConfigurator : AbstractBlockConfigurator
     {
-        static public void configure(WorldBlock block, World world)
+		override
+        public void configure(WorldBlock block, World world)
         {
 			//	Assume blocks have map location aspect
 			var locState = MapLocationAspect.getMapLocationState (block);

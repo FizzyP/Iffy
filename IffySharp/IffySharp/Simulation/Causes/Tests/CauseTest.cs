@@ -24,6 +24,9 @@ namespace IffySharp.Tests
             var sumCause = new BinOpCause<double>((double x, double y) => { return x + y; }, vc, vc2);
             Console.WriteLine("vc2 = " + vc2.Value);
             Console.WriteLine("sum of vc2 and vc = " + sumCause.Value);
+
+			/////////////////////////////////////////////
+
         }
 
 

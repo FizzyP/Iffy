@@ -8,6 +8,7 @@ using IffySharp.Simulation.Aspects;
 
 namespace IffySharp.Simulation
 {
+	[Serializable]
 	public class World : WorldObjectBase
     {
         static readonly IntVector3 dim = new IntVector3(100, 100, 20);
@@ -16,16 +17,20 @@ namespace IffySharp.Simulation
         WorldBlock[, ,] blocks = new WorldBlock[dim.x, dim.y, dim.z];
         WorldBlock defaultBlock;    //  All undefined blocks map to this
 
-        IBlockConfigurator configurator;
+        AbstractBlockConfigurator configurator;
 
-		World(IBlockConfigurator blockConfig)
+		public World(AbstractBlockConfigurator blockConfig)
         {
             configurator = blockConfig;
 			TimeAspect.imbue(this);
+			SoundAspect.imbue (this);
         }
 
         public WorldBlock peekBlock(IntVector3 spot)
         {
+			//	Offset so (0,0,0) is here
+			spot += center;
+
             if (spot.x < 0 || spot.x >= dim.x ||
                 spot.y < 0 || spot.y >= dim.y ||
                 spot.z < 0 || spot.z > -dim.z)
