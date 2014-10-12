@@ -41,10 +41,8 @@ namespace IffySharp.Simulation
             set
             {
                 //  This setter's purpose is to
-                //  Enforce the invariant that if I am dirty so are all of my dependents and their dependents and their...
-
-                //  Optimization
-                if (value == _isDirty)
+                //  Enforce the invariant that if I am dirty so are all of my dependents and their dependents and their dependents...
+				if (value == _isDirty)		//  Optimization
                     return;
 
                 _isDirty = value;
@@ -52,23 +50,31 @@ namespace IffySharp.Simulation
                 //  Enforce invariant
                 if (_isDirty)
                 {
-					//	Mark them all dirty instantaneously so that if calling _is
-					foreach (Cause cause in dependents)
-						_isDirty = true;
-                    foreach (Cause cause in dependents)
-                        cause.IsDirty = true;
+					//	First mark us and all our distant dependents as dirty.
+					var nonLazyDependents = new List<Cause> ();
+					recursivelyMarkDirtyCollectingNonLazyDependents (nonLazyDependents);
+
+					//	All the dependents that are !IsLazy now need to be updated
+					foreach (Cause nonLazy in nonLazyDependents) {
+						nonLazy.update ();
+					}
                 }
-
-				if (value && !IsLazy) {
-					update ();
-				}
-
             }
             get
             {
                 return _isDirty;
             }
         }
+
+		private void recursivelyMarkDirtyCollectingNonLazyDependents(List<Cause> nonLazyDependents)
+		{
+			_isDirty = true;
+			if (!IsLazy)
+				nonLazyDependents.Add (this);
+
+			foreach (Cause cause in dependents)
+				cause.recursivelyMarkDirtyCollectingNonLazyDependents (nonLazyDependents);
+		}
 
         //  If !isLazy then marking an object dirty causes it to immediately update
         private bool _isLazy = true;
