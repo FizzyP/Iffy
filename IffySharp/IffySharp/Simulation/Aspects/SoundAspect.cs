@@ -2,12 +2,9 @@
 
 namespace IffySharp.Simulation.Aspects
 {
+	abstract
 	public class SoundAspect
 	{
-		public SoundAspect ()
-		{
-		}
-
 		public static readonly Object kSoundKey = new Object();
 
 		public static WorldObjectBase imbue(WorldObjectBase obj)

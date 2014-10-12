@@ -21,7 +21,8 @@ namespace IffySharp.Simulation.Aspects
         { }
     }
 
-    abstract class MapLocationAspect
+    abstract
+	class MapLocationAspect
     {
         public static readonly Object kMapLocationKey = new Object();
 

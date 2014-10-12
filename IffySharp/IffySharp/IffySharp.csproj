@@ -66,6 +66,7 @@
     <Compile Include="Simulation\World\AbstractBlockConfigurator.cs" />
     <Compile Include="Exceptions\CircularDependencyException.cs" />
     <Compile Include="Simulation\Aspects\HearingAspect.cs" />
+    <Compile Include="Simulation\Causes\HearingCause.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

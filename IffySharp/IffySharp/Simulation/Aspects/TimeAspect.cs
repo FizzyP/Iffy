@@ -2,12 +2,9 @@
 
 namespace IffySharp.Simulation
 {
+	abstract
 	public class TimeAspect
 	{
-		public TimeAspect ()
-		{
-		}
-
 		public static readonly Object kTimeKey = new Object();
 
 		public static WorldObjectBase imbue(WorldObjectBase obj)
