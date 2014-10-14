@@ -61,8 +61,7 @@ ROOM DESCRIPTION ENGINE
 
 +	Templatized descriptions for each block.  Many nearby blocks use the same description.
 +	Optional description of objects in 3x3x3 region.
-+	Optional description of nearby regions
-
++	Optional description of nearby regions (optionally based on facing?)
 
 MAD-LIBS ENGINE
 

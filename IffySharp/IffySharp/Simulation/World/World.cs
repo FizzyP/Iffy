@@ -23,7 +23,7 @@ namespace IffySharp.Simulation
         {
             configurator = blockConfig;
 			TimeAspect.imbue(this);
-			SoundAspect.imbue (this);
+			EventAspect.imbue (this);
         }
 
         public WorldBlock peekBlock(IntVector3 spot)

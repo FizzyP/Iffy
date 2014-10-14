@@ -19,15 +19,14 @@ namespace IffySharp.Simulation.Test
 			var spot = new IntVector3 (0, 0, 0);
 			var block = world.getBlock (spot);
 
-
-			var sound = SoundAspect.getSoundCause (world);
+			var eventCause = EventAspect.getEventCause (world);
 
 			//	Make block listen?
-			HearingAspect.imbue (block, new EchoHearingCause(sound));
+			PerceptionAspect.imbue (block, new EchoPerceptionCause(eventCause));
 
 			//	Generate a new sound
 
-			sound.Value = new SoundEventData (100);
+			eventCause.Value = new WorldEvent ();
 		}
 	}
 }
