@@ -71,6 +71,9 @@
     <Compile Include="Simulation\Causes\Temp\EchoPerceptionCause.cs" />
     <Compile Include="Simulation\Events\SensationEvent.cs" />
     <Compile Include="Simulation\Sensation\PerceptualRequirements.cs" />
+    <Compile Include="SubParser\Dispatch.cs" />
+    <Compile Include="SubParser\UncaughtDispatchException.cs" />
+    <Compile Include="SubParser\Tests\SubParserTest.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -90,5 +93,7 @@
     <Folder Include="Simulation\Causes\Temp\" />
     <Folder Include="Simulation\Events\" />
     <Folder Include="Simulation\Sensation\" />
+    <Folder Include="SubParser\" />
+    <Folder Include="SubParser\Tests\" />
   </ItemGroup>
 </Project>
