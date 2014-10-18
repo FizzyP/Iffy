@@ -1,6 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\IffySharp\IffySharp\Simulation\Causes\Cause.cs">
+    <Files>
+      <File FileName="..\IffySharp\IffySharp\Simulation\Events\SensationEvent.cs" Line="1" Column="1" />
+      <File FileName="..\IffySharp\IffySharp\Simulation\Causes\Cause.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

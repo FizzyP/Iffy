@@ -81,9 +81,6 @@ namespace IffySharp.Simulation
             set
             {
                 _isLazy = value;
-//                //  If we're not lazy but dirty, immediately fix this problem
-//                if (!_isLazy && _isDirty)
-//                    update();
             }
             get
             {
@@ -106,8 +103,7 @@ namespace IffySharp.Simulation
             onUpdate();
             IsDirty = false;
 
-            //  Update every cause that depends on us:
-            //  First mark them all dirty
+            //  Every cause that depends on us is now dirty.
             foreach (Cause cause in dependents)
                 cause.IsDirty = true;
         }

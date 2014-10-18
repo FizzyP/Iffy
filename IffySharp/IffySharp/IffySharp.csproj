@@ -69,6 +69,8 @@
     <Compile Include="Simulation\Causes\PerceptionCause.cs" />
     <Compile Include="Simulation\Aspects\EventAspect.cs" />
     <Compile Include="Simulation\Causes\Temp\EchoPerceptionCause.cs" />
+    <Compile Include="Simulation\Events\SensationEvent.cs" />
+    <Compile Include="Simulation\Sensation\PerceptualRequirements.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -87,5 +89,6 @@
     <Folder Include="Simulation\World\Tests\" />
     <Folder Include="Simulation\Causes\Temp\" />
     <Folder Include="Simulation\Events\" />
+    <Folder Include="Simulation\Sensation\" />
   </ItemGroup>
 </Project>
