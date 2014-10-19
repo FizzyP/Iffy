@@ -51,7 +51,6 @@
     <Compile Include="Simulation\WorldState.cs" />
     <Compile Include="Test\IffyTest.cs" />
     <Compile Include="Simulation\Player\Player.cs" />
-    <Compile Include="Simulation\Renderer\IIffyRenderer.cs" />
     <Compile Include="Simulation\Simulation.cs" />
     <Compile Include="Simulation\Utils\ImplementationError.cs" />
     <Compile Include="Simulation\Aspects\TimeAspect.cs" />
@@ -68,12 +67,15 @@
     <Compile Include="Simulation\Causes\PerceptionCause.cs" />
     <Compile Include="Simulation\Aspects\EventAspect.cs" />
     <Compile Include="Simulation\Causes\Temp\EchoPerceptionCause.cs" />
-    <Compile Include="Simulation\Events\SensationEvent.cs" />
     <Compile Include="Simulation\Sensation\PerceptualRequirements.cs" />
     <Compile Include="SubParser\Dispatch.cs" />
     <Compile Include="SubParser\UncaughtDispatchException.cs" />
     <Compile Include="SubParser\Tests\SubParserTest.cs" />
     <Compile Include="Simulation\World\ConstantBlockConfigurator.cs" />
+    <Compile Include="Simulation\Camera\Camera.cs" />
+    <Compile Include="Simulation\Camera\IIffyRenderer.cs" />
+    <Compile Include="Simulation\Camera\Test\CameraTest.cs" />
+    <Compile Include="Simulation\Camera\Test\SimpleRenderer.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -88,12 +90,13 @@
     <Folder Include="Simulation\Player\" />
     <Folder Include="Simulation\Renderer\" />
     <Folder Include="Simulation\World\" />
-    <Folder Include="Temp Parser\" />
     <Folder Include="Simulation\World\Tests\" />
     <Folder Include="Simulation\Causes\Temp\" />
     <Folder Include="Simulation\Events\" />
     <Folder Include="Simulation\Sensation\" />
     <Folder Include="SubParser\" />
     <Folder Include="SubParser\Tests\" />
+    <Folder Include="Simulation\Camera\" />
+    <Folder Include="Simulation\Camera\Test\" />
   </ItemGroup>
 </Project>

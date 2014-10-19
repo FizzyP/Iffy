@@ -17,6 +17,7 @@ namespace IffySharp.Test
 			CauseTest.test ();
 			WorldTest.test();
 			SubParserTest.test ();
+			CameraTest.test ();
         }
     }
 }
