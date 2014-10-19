@@ -25,7 +25,6 @@ namespace IffySharp.Simulation.Test
 			PerceptionAspect.imbue (block, new EchoPerceptionCause(eventCause));
 
 			//	Generate a new sound
-
 			eventCause.Value = new WorldEvent ();
 		}
 	}

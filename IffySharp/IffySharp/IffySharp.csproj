@@ -44,7 +44,6 @@
     <Compile Include="Simulation\Causes\Cause.cs" />
     <Compile Include="Simulation\Causes\FunctionCause.cs" />
     <Compile Include="Simulation\Causes\RValueCause.cs" />
-    <Compile Include="Simulation\Temp\ConstantBlockConfigurator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Simulation\Causes\ValueCause.cs" />
     <Compile Include="Simulation\Utils\Vector3.cs" />
@@ -74,6 +73,7 @@
     <Compile Include="SubParser\Dispatch.cs" />
     <Compile Include="SubParser\UncaughtDispatchException.cs" />
     <Compile Include="SubParser\Tests\SubParserTest.cs" />
+    <Compile Include="Simulation\World\ConstantBlockConfigurator.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
