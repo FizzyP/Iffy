@@ -20,7 +20,7 @@ namespace IffySharp.Simulation
 
         public RValueCause()
         {
-            IsDirty = true;
+            IsDirty = false;
         }
 
         protected T _value;

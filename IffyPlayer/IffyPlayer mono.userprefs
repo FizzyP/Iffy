@@ -1,12 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\IffySharp\IffySharp\Simulation\Causes\PerceptionCause.cs">
-    <Files>
-      <File FileName="..\IffySharp\IffySharp\Simulation\Aspects\PerceptionAspect.cs" Line="3" Column="3" />
-      <File FileName="..\IffySharp\IffySharp\Simulation\Causes\PerceptionCause.cs" Line="37" Column="37" />
-      <File FileName="..\IffySharp\IffySharp\Simulation\Camera\Camera.cs" Line="23" Column="23" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
