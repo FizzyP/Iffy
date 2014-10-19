@@ -5,16 +5,22 @@ using IffySharp.Simulation;
 
 namespace IffySharp.Simulation
 {
-	public class Camera : Cause
+	public class Camera : PerceptionCause
 	{
+		public ValueCause<string> InnerMonologue {
+			set;
+			get;
+		}
+
 		private IIffyRenderer renderer;
-		private EventCause eventCause;
 
 		public Camera (IIffyRenderer renderer, EventCause eventCause)
+			: base(eventCause)
 		{
+			InnerMonologue = new ValueCause<string> ();
+
 			IsRecording = false;
 			this.renderer = renderer;
-			this.eventCause = eventCause;
 
 			IsLazy = false;					//	report events as soon as they happen.
 			addDependency (eventCause);
@@ -26,11 +32,8 @@ namespace IffySharp.Simulation
 		}
 
 		override
-		public void onUpdate()
+		public void onEvent (WorldEvent worldEvent)
 		{
-			//	We're dependent on just "eventCause" so if we're updated it's because
-			//	a new event has occurred.  Fetch it from the cause.
-			var worldEvent = eventCause.Value;
 			renderer.render (worldEvent.InternalDescription);
 		}
 	}

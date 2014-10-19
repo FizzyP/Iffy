@@ -10,7 +10,6 @@ namespace IffySharp.Simulation.Test
 		{
 		}
 
-
 		public void render(string text)
 		{
 			Console.WriteLine (text);

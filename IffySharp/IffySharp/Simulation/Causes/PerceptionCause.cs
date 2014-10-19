@@ -5,10 +5,8 @@ namespace IffySharp.Simulation
 	abstract
 	public class PerceptionCause : Cause
 	{
-		//	Override this to create any hearing behaviors you want.
 		abstract
 		public void onEvent (WorldEvent we);
-
 
 		EventCause worldEvents;
 
