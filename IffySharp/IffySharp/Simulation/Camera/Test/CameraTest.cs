@@ -15,7 +15,10 @@ namespace IffySharp.Simulation.Test
 			var spot = new IntVector3 (0, 0, 0);
 			var block = world.getBlock (spot);
 			var eventCause = EventAspect.getEventCause (world);
-			var camera = new Camera (new SimpleRenderer(), eventCause);
+
+			var player = new Player (block);
+
+			var camera = Camera.new_FollowingObject(player, new SimpleRenderer());
 
 			//	Generate a new sound
 			var we = new WorldEvent ();

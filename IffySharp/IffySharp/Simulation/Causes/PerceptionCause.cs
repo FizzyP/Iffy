@@ -8,6 +8,14 @@ namespace IffySharp.Simulation
 		abstract
 		public void onEvent (WorldEvent we);
 
+		private readonly ValueCause<string> innerMonologue = new ValueCause<string>("");
+
+		public RValueCause<string> InnerMonologue {
+			get {
+				return innerMonologue;
+			}
+		}
+
 		EventCause worldEvents;
 
 		public PerceptionCause (EventCause worldEvents)
@@ -16,6 +24,7 @@ namespace IffySharp.Simulation
 			this.addDependency (worldEvents);
 			IsLazy = false;
 			IsDirty = false;
+			InnerMonologue.IsLazy = false;
 		}
 
 		override

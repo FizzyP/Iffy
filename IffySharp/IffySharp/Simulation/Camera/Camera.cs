@@ -2,28 +2,34 @@
 
 using IffySharp;
 using IffySharp.Simulation;
+using IffySharp.Simulation.Aspects;
 
 namespace IffySharp.Simulation
 {
-	public class Camera : PerceptionCause
+	public class Camera : Cause
 	{
-		public ValueCause<string> InnerMonologue {
-			set;
-			get;
-		}
-
 		private IIffyRenderer renderer;
+		private RValueCause<string> messageCause;
 
-		public Camera (IIffyRenderer renderer, EventCause eventCause)
-			: base(eventCause)
+		private Camera (IIffyRenderer renderer, RValueCause<string> messageCause)
 		{
-			InnerMonologue = new ValueCause<string> ();
-
 			IsRecording = false;
 			this.renderer = renderer;
+			this.messageCause = messageCause;
 
 			IsLazy = false;					//	report events as soon as they happen.
-			addDependency (eventCause);
+			addDependency (messageCause);
+		}
+
+		public static Camera new_FollowingObject(WorldObjectBase obj, IIffyRenderer renderer)
+		{
+			var perception = PerceptionAspect.getPerceptionCause (obj);
+			if (perception == null)
+				throw new ArgumentException ("A camera must be built from objects imbued with perception.");
+			var messages = perception.InnerMonologue;
+
+			//	Hook up a new camera listening to messages and publishing to renderer.
+			return new Camera (renderer, messages);
 		}
 
 		public bool IsRecording {
@@ -32,9 +38,9 @@ namespace IffySharp.Simulation
 		}
 
 		override
-		public void onEvent (WorldEvent worldEvent)
+		public void onUpdate()
 		{
-			renderer.render (worldEvent.InternalDescription);
+			renderer.render (messageCause.Value);
 		}
 	}
 }

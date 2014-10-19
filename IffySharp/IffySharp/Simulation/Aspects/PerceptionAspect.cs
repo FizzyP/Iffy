@@ -5,7 +5,7 @@ namespace IffySharp.Simulation.Aspects
 	abstract
 	public class PerceptionAspect
 	{
-		public static readonly Object kEventListeningKey = new Object();
+		private static readonly Object kEventListeningKey = new Object();
 
 		public static WorldObjectBase imbue (WorldObjectBase obj, PerceptionCause perception)
 		{
@@ -24,6 +24,13 @@ namespace IffySharp.Simulation.Aspects
 			return obj;
 		}
 
+		public static PerceptionCause getPerceptionCause(WorldObjectBase obj)
+		{
+			if (!obj.hasAttribute (kEventListeningKey))
+				return null;
+			else
+				return (PerceptionCause) obj [kEventListeningKey];
+		}
 	}
 }
 

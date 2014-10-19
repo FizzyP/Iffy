@@ -76,6 +76,7 @@
     <Compile Include="Simulation\Camera\IIffyRenderer.cs" />
     <Compile Include="Simulation\Camera\Test\CameraTest.cs" />
     <Compile Include="Simulation\Camera\Test\SimpleRenderer.cs" />
+    <Compile Include="Simulation\Player\PlayerPerceptionCause.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
