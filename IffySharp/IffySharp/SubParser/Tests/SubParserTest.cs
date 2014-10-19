@@ -9,6 +9,7 @@ namespace IffySharp.SubParser.Test
 		public static void test()
 		{
 			Dispatch._("naked time");
+			Dispatch._ (COS.Tok, 3.141592);
 		}
 	}
 
@@ -16,6 +17,8 @@ namespace IffySharp.SubParser.Test
 
 }
 
+
+//	Extend the dispatch method to do what you want
 namespace IffySharp.SubParser
 {
 	public partial class Dispatch
@@ -23,6 +26,21 @@ namespace IffySharp.SubParser
 		public void dispatch(string str)
 		{
 			Console.WriteLine(str);
+		}
+
+		public void dispatch(COS tok, double num)
+		{
+			Console.WriteLine ("cos(" + num + ") = " + Math.Cos (num));
+		}
+	}
+
+
+	public class COS {
+		private static COS tok = new COS();
+
+		static
+		public COS Tok {
+			get { return tok; }
 		}
 	}
 }
