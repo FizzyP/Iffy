@@ -36,12 +36,7 @@ namespace IffySharp.SubParser
 
 
 	public class COS {
-		private static COS tok = new COS();
-
-		static
-		public COS Tok {
-			get { return tok; }
-		}
+		public readonly static COS Tok = new COS();
 	}
 }
 

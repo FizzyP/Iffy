@@ -8,7 +8,7 @@ namespace IffySharp.SubParser
 		private static readonly Dispatch singleton = new Dispatch();
 		public Dispatch() {}
 			
-		public void dispatch(params dynamic[] args) {
+		public void dispatch(params object[] args) {
 			throw new UncaughtDispatchException ();
 		}
 
