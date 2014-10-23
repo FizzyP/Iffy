@@ -15,12 +15,12 @@ namespace IffyPlayer
 
 			while (shouldContinue)
 			{
+				Console.WriteLine ();
 				Console.Write ("> ");
 				string input = Console.ReadLine ();
 				string[] words = input.Split( new[] {' ', '\t'}, 100);
 				shouldContinue = parseInput(words);
 			}
-
 		}
 
 

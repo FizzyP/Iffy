@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\IffySharp\IffySharp\SubParser\Tests\SubParserTest.cs">
+    <Files>
+      <File FileName="..\IffySharp\IffySharp\SubParser\Tests\SubParserTest.cs" Line="3" Column="3" />
+      <File FileName="..\IffySharp\IffySharp\SubParser\Dispatch.cs" Line="4" Column="4" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

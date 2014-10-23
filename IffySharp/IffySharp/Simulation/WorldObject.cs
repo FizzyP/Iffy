@@ -12,6 +12,11 @@ namespace IffySharp.Simulation
     {
         private readonly IFKV attributes = new IFKV();
 
+		public WorldObjectBase()
+		{
+			InternalDescription = "(no description)";
+		}
+
         public Object this[Object key] {
             get
             {
@@ -33,6 +38,12 @@ namespace IffySharp.Simulation
 		public bool hasAttribute(Object key)
 		{
 			return attributes.ContainsKey (key);
+		}
+
+		virtual
+		public string InternalDescription {
+			set;
+			get;
 		}
 
     }

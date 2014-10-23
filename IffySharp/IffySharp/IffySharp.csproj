@@ -44,7 +44,6 @@
     <Compile Include="Simulation\Causes\Cause.cs" />
     <Compile Include="Simulation\Causes\FunctionCause.cs" />
     <Compile Include="Simulation\Causes\RValueCause.cs" />
-    <Compile Include="Simulation\Temp\ConstantBlockConfigurator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Simulation\Causes\ValueCause.cs" />
     <Compile Include="Simulation\Utils\Vector3.cs" />
@@ -52,22 +51,32 @@
     <Compile Include="Simulation\WorldState.cs" />
     <Compile Include="Test\IffyTest.cs" />
     <Compile Include="Simulation\Player\Player.cs" />
-    <Compile Include="Simulation\Renderer\IIffyRenderer.cs" />
     <Compile Include="Simulation\Simulation.cs" />
     <Compile Include="Simulation\Utils\ImplementationError.cs" />
     <Compile Include="Simulation\Aspects\TimeAspect.cs" />
     <Compile Include="Simulation\World\WorldBlock.cs" />
     <Compile Include="Simulation\World\World.cs" />
     <Compile Include="Simulation\Causes\TimeCause.cs" />
-    <Compile Include="Simulation\Aspects\SoundAspect.cs" />
-    <Compile Include="Simulation\Causes\SoundCause.cs" />
     <Compile Include="Simulation\Causes\Tests\CauseTest.cs" />
     <Compile Include="Simulation\World\Tests\WorldTest.cs" />
     <Compile Include="Simulation\World\AbstractBlockConfigurator.cs" />
     <Compile Include="Exceptions\CircularDependencyException.cs" />
-    <Compile Include="Simulation\Aspects\HearingAspect.cs" />
-    <Compile Include="Simulation\Causes\HearingCause.cs" />
-    <Compile Include="Simulation\Causes\Temp\EchoHearingCause.cs" />
+    <Compile Include="Simulation\Events\WorldEvent.cs" />
+    <Compile Include="Simulation\Causes\EventCause.cs" />
+    <Compile Include="Simulation\Aspects\PerceptionAspect.cs" />
+    <Compile Include="Simulation\Causes\PerceptionCause.cs" />
+    <Compile Include="Simulation\Aspects\EventAspect.cs" />
+    <Compile Include="Simulation\Causes\Temp\EchoPerceptionCause.cs" />
+    <Compile Include="Simulation\Sensation\PerceptualRequirements.cs" />
+    <Compile Include="SubParser\Dispatch.cs" />
+    <Compile Include="SubParser\UncaughtDispatchException.cs" />
+    <Compile Include="SubParser\Tests\SubParserTest.cs" />
+    <Compile Include="Simulation\World\ConstantBlockConfigurator.cs" />
+    <Compile Include="Simulation\Camera\Camera.cs" />
+    <Compile Include="Simulation\Camera\IIffyRenderer.cs" />
+    <Compile Include="Simulation\Camera\Test\CameraTest.cs" />
+    <Compile Include="Simulation\Camera\Test\SimpleRenderer.cs" />
+    <Compile Include="Simulation\Player\PlayerPerceptionCause.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -82,8 +91,13 @@
     <Folder Include="Simulation\Player\" />
     <Folder Include="Simulation\Renderer\" />
     <Folder Include="Simulation\World\" />
-    <Folder Include="Temp Parser\" />
     <Folder Include="Simulation\World\Tests\" />
     <Folder Include="Simulation\Causes\Temp\" />
+    <Folder Include="Simulation\Events\" />
+    <Folder Include="Simulation\Sensation\" />
+    <Folder Include="SubParser\" />
+    <Folder Include="SubParser\Tests\" />
+    <Folder Include="Simulation\Camera\" />
+    <Folder Include="Simulation\Camera\Test\" />
   </ItemGroup>
 </Project>

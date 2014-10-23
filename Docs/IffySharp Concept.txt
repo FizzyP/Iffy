@@ -17,10 +17,11 @@ GOALS
 COMPONENTS
 
 User Input Parser/Rewriter
+Subparser (dynamic dispatch engine)
+3D Simulation
 Event Generation
 Event and Dependency Resolution
-3D Simulation
-"Room" description engine.
+Perception and narative generation
 Mad-Libs Engine
 State Persistence
 
@@ -29,8 +30,9 @@ State Persistence
 
 
 User Input Parser/Rewriter
-Event Generation
-Event and Dependency Resolution
+
+SUBPARSER
+
 
 
 3D SIMULATION
@@ -57,11 +59,18 @@ Event and Dependency Resolution
 	from Causes in relevant objects.
 
 
-ROOM DESCRIPTION ENGINE
+Event Generation
+
+Event and Dependency Resolution
+
+
+PERCEPTION AND NARATIVE GENERATION
 
 +	Templatized descriptions for each block.  Many nearby blocks use the same description.
 +	Optional description of objects in 3x3x3 region.
-+	Optional description of nearby regions
++	Optional description of nearby regions (optionally based on facing?)
+
++	Camera object attached to "perseptual" object.
 
 
 MAD-LIBS ENGINE
@@ -70,3 +79,5 @@ MAD-LIBS ENGINE
 STATE PERSISTENCE
 
 +	Serializable IF instance.
+
+

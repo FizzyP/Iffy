@@ -3,29 +3,27 @@
 using IffySharp.Simulation;
 using IffySharp.Simulation.Aspects;
 
-
 namespace IffySharp.Simulation.Test
 {
-	public class WorldTest
+	abstract
+	public class CameraTest
 	{
-		public WorldTest ()
-		{
-		}
 
 		public static void test()
 		{
 			var world = new World (new ConstantBlockConfigurator());
-
 			var spot = new IntVector3 (0, 0, 0);
 			var block = world.getBlock (spot);
-
 			var eventCause = EventAspect.getEventCause (world);
 
-			//	Make block listen?
-			PerceptionAspect.imbue (block, new EchoPerceptionCause(eventCause));
+			var player = new Player (block);
+
+			var camera = Camera.new_FollowingObject(player, new SimpleRenderer());
 
 			//	Generate a new sound
-			eventCause.Value = new WorldEvent ();
+			var we = new WorldEvent ();
+			we.InternalDescription = "(some world event)";
+			eventCause.Value = we;
 		}
 	}
 }
