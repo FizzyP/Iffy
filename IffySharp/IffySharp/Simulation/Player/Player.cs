@@ -1,7 +1,8 @@
 ﻿using System;
+using IffySharp.Simulation;
 using IffySharp.Simulation.Aspects;
 
-namespace IffySharp.Simulation
+namespace IffySharp.StdLib
 {
 	public class Player : WorldObjectBase
 	{

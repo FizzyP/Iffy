@@ -6,11 +6,25 @@ namespace IffySharp.SubParser
 	public partial class Dispatch
 	{
 		private static readonly Dispatch singleton = new Dispatch();
+
+		//	Get the singleton.
+		public Dispatch instance {
+			get {
+				return singleton;
+			}
+		}
+
 		public Dispatch() {}
 			
 		public void dispatch(params object[] args) {
 			throw new UncaughtDispatchException ();
 		}
+
+
+
+		//
+		//	Deprecated.  These perform poorly.
+		//
 
 		static public void _(dynamic arg1) {
 			singleton.dispatch (arg1);

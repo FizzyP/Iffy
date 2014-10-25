@@ -50,7 +50,6 @@
     <Compile Include="Simulation\WorldObject.cs" />
     <Compile Include="Simulation\WorldState.cs" />
     <Compile Include="Test\IffyTest.cs" />
-    <Compile Include="Simulation\Player\Player.cs" />
     <Compile Include="Simulation\Simulation.cs" />
     <Compile Include="Simulation\Utils\ImplementationError.cs" />
     <Compile Include="Simulation\Aspects\TimeAspect.cs" />
@@ -76,7 +75,14 @@
     <Compile Include="Simulation\Camera\IIffyRenderer.cs" />
     <Compile Include="Simulation\Camera\Test\CameraTest.cs" />
     <Compile Include="Simulation\Camera\Test\SimpleRenderer.cs" />
-    <Compile Include="Simulation\Player\PlayerPerceptionCause.cs" />
+    <Compile Include="Parser\Parser.cs" />
+    <Compile Include="Simulation\Knowledge\SymbolicKnowledge.cs" />
+    <Compile Include="..\..\3rd Party\EeekSoft.Text\StringSearch.cs">
+      <Link>3rd Party\StringSearch.cs</Link>
+    </Compile>
+    <Compile Include="Simulation\Player\Player.cs" />
+    <Compile Include="StdLib\Player\PlayerPerceptionCause.cs" />
+    <Compile Include="Simulation\Aspects\KnowledgeAspect.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -99,5 +105,9 @@
     <Folder Include="SubParser\Tests\" />
     <Folder Include="Simulation\Camera\" />
     <Folder Include="Simulation\Camera\Test\" />
+    <Folder Include="Parser\" />
+    <Folder Include="Simulation\Knowledge\" />
+    <Folder Include="3rd Party\" />
+    <Folder Include="StdLib\" />
   </ItemGroup>
 </Project>
