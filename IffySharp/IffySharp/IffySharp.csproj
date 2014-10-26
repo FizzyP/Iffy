@@ -88,6 +88,8 @@
     <Compile Include="StdLib\Words\SymbolicToken.cs" />
     <Compile Include="StdLib\Words\DirectionToken.cs" />
     <Compile Include="Exceptions\ParsingException.cs" />
+    <Compile Include="SubParser\TerminalDispatch.cs" />
+    <Compile Include="StdLib\StdTerminalDispatch.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

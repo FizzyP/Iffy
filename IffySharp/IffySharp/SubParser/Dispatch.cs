@@ -1,5 +1,7 @@
 ﻿using System;
 
+using IffySharp.StdLib.Vocab;
+
 namespace IffySharp.SubParser
 {
 
@@ -8,12 +10,83 @@ namespace IffySharp.SubParser
 		public static readonly Dispatch Instance = new Dispatch();
 
 
+
 		public Dispatch() {}
-			
+
+
 		public void dispatch(params object[] args) {
 			throw new UncaughtDispatchException ();
 		}
 
+		public bool dispatchIsValid(params object[] args) {
+			return false;
+		}
+
+		public string dispatchDescription(params object[] args) {
+			throw new UncaughtDispatchException ();
+		}
+
+
+		public static bool dispatch(Dispatch exec, object[] args)
+		{
+			switch (args.Length) {
+			case 0:
+				return false;
+
+			case 1:
+				return (exec as dynamic).dispatch ((dynamic) args [0]);
+
+			case 2:
+				return (exec as dynamic).dispatch ((dynamic) args [0], (dynamic) args[1]);
+
+			case 3:
+				return (exec as dynamic).dispatch ((dynamic) args [0], (dynamic) args[1], (dynamic) args[2]);
+
+			default:
+				throw new ImplementationError ("Too many arguemnts.");
+			}
+		}
+
+
+		public static bool isValid(Dispatch exec, object[] args)
+		{
+			switch (args.Length) {
+			case 0:
+				return false;
+
+			case 1:
+				return (exec as dynamic).dispatchIsValid ((dynamic) args [0]);
+
+			case 2:
+				return (exec as dynamic).dispatchIsValid ((dynamic) args [0], (dynamic) args[1]);
+
+			case 3:
+				return (exec as dynamic).dispatchIsValid ((dynamic) args [0], (dynamic) args[1], (dynamic) args[2]);
+
+			default:
+				throw new ImplementationError ("Too many arguemnts.");
+			}
+		}
+
+		public static string getDescription(Dispatch exec, object[] args)
+		{
+			switch (args.Length) {
+			case 0:
+				throw new ImplementationError ();
+
+			case 1:
+				return (exec as dynamic).dispatchDescription ((dynamic) args [0]);
+
+			case 2:
+				return (exec as dynamic).dispatchDescription ((dynamic) args [0], (dynamic) args[1]);
+
+			case 3:
+				return (exec as dynamic).dispatchDescription ((dynamic) args [0], (dynamic) args[1], (dynamic) args[2]);
+
+			default:
+				throw new ImplementationError ("Too many arguemnts.");
+			}
+		}
 
 
 		//

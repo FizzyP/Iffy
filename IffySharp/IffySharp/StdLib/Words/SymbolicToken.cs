@@ -4,8 +4,11 @@ namespace IffySharp.StdLib.Vocab
 {
 	public class SymbolicToken
 	{
-		public SymbolicToken ()
+		public readonly string Name;
+
+		public SymbolicToken (string name)
 		{
+			Name = name;
 		}
 	}
 

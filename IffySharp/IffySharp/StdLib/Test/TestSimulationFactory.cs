@@ -27,7 +27,7 @@ namespace IffySharp.StdLib
 
 			var renderer = new SimpleRenderer ();
 
-			var sim = new IffySharp.Simulation.Simulation (worldState, renderer, world, startBlock);
+			var sim = new IffySharp.Simulation.Simulation (worldState, renderer, world, startBlock, new StdTerminalDispatch());
 
 			//	Add vocab to player
 			var player = sim.player;

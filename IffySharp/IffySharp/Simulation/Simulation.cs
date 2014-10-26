@@ -17,7 +17,7 @@ namespace IffySharp.Simulation
 		public readonly Player player;
 		public readonly Camera camera;
 
-		public Simulation (WorldState state, IIffyRenderer renderer, World startWorld, WorldBlock startBlock)
+		public Simulation (WorldState state, IIffyRenderer renderer, World startWorld, WorldBlock startBlock, TerminalDispatch dispatch)
 		{
 			if (state == null) {
 				throw new ImplementationError ();
@@ -29,7 +29,7 @@ namespace IffySharp.Simulation
 
 			player = new Player (startBlock);
 
-			this.terminalDispatch = new Dispatch();
+			this.terminalDispatch = dispatch;
 			this.parser = new IffySharp.Parser.Parser (terminalDispatch, KnowledgeAspect.getKnowledge (player));
 
 			this.camera = Camera.new_FollowingObject (player, renderer);

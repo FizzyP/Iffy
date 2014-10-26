@@ -13,10 +13,12 @@ namespace IffySharp.Parser
 		public delegate void ParsingTask(object[] symbols, int count);
 
 		private SymbolicKnowledge knowledge;
+		Dispatch executor;
 
 		public Parser (Dispatch exec, SymbolicKnowledge knowledge)
 		{
 			this.knowledge = knowledge;
+			this.executor = exec;
 		}
 
 		public void parse(string text)
@@ -24,7 +26,10 @@ namespace IffySharp.Parser
 			StringSearchResult[] results = findWordsInString (scrubString(text));
 			var tokenMap = convertResultsToTokenMap (results);
 
-			traverseTokens (tokenMap, text.Length, new ParsingTask (dummyParsingTask));
+			var validDispatchFinder = new ValidDispatchFinderParsingTask (executor);
+			traverseTokens (tokenMap, text.Length, new ParsingTask (validDispatchFinder.task));
+
+//			traverseTokens (tokenMap, text.Length, new ParsingTask (dummyParsingTask));
 
 			// Write all results  
 			foreach(StringSearchResult r in results)
@@ -119,6 +124,44 @@ namespace IffySharp.Parser
 			public string text;
 			public int index;
 			public object[] associatedObjects;
+		}
+
+		private class ValidDispatch {
+			public object[] dispatchArgs;
+			public string description;
+		}
+
+
+		private class ValidDispatchFinderParsingTask
+		{
+			public readonly List<ValidDispatch> validDispatches = new List<ValidDispatch>();
+			private Dispatch exec;
+
+
+			public ValidDispatchFinderParsingTask(Dispatch exec)
+			{
+				this.exec = exec;
+			}
+
+			public void task(object[] symbols, int count)
+			{
+				try {
+					var trimmedSymbols = new object[count];
+					Array.Copy(symbols, trimmedSymbols, count);
+
+					bool isValid = Dispatch.isValid(exec, trimmedSymbols);
+					if (isValid) {
+						var validDispatch = new ValidDispatch();
+						validDispatch.dispatchArgs = (object[]) symbols.Clone();
+						validDispatch.description = Dispatch.getDescription(exec, symbols);
+						validDispatches.Add(validDispatch);
+					}
+
+				}
+				catch {
+					return;
+				}
+			}
 		}
 
 	}
