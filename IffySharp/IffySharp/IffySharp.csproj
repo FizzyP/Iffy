@@ -83,6 +83,7 @@
     <Compile Include="Simulation\Player\Player.cs" />
     <Compile Include="StdLib\Player\PlayerPerceptionCause.cs" />
     <Compile Include="Simulation\Aspects\KnowledgeAspect.cs" />
+    <Compile Include="StdLib\Test\TestSimulationFactory.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -109,5 +110,7 @@
     <Folder Include="Simulation\Knowledge\" />
     <Folder Include="3rd Party\" />
     <Folder Include="StdLib\" />
+    <Folder Include="StdLib\Game\" />
+    <Folder Include="StdLib\Test\" />
   </ItemGroup>
 </Project>

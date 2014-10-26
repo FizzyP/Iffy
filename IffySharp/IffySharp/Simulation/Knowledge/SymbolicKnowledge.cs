@@ -39,6 +39,14 @@ namespace IffySharp.Simulation
 			}
 		}
 
+		public IEnumerable<string> AllWords
+		{
+			get {
+				return Associations.Keys;
+			}
+		}
+
+
 //		public SortedSet<object> this[string word]
 //		{
 //			get {

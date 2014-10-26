@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using IffySharp.Test;
+using IffySharp.Parser;
 
 namespace IffyPlayer
 {
@@ -18,7 +19,7 @@ namespace IffyPlayer
 			Console.WriteLine ("################################################");
 			Console.WriteLine ();
 
-			var tt = new TempTerm ();
+			var tt = new TempTerm (parser);
 			tt.termLoop ();
 
 			Console.WriteLine ();

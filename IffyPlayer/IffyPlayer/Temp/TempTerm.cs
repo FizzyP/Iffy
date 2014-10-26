@@ -1,11 +1,14 @@
 ﻿using System;
+using IffySharp.Parser;
+using EeekSoft.Text;
 
 namespace IffyPlayer
 {
 	public class TempTerm
 	{
+		public delegate void SymbolicationTask(object[] symbols);
 
-		public TempTerm ()
+		public TempTerm (Parser parser)
 		{
 		}
 
@@ -17,15 +20,15 @@ namespace IffyPlayer
 			{
 				Console.WriteLine ();
 				Console.Write ("> ");
-				string input = Console.ReadLine ();
-				string[] words = input.Split( new[] {' ', '\t'}, 100);
-				shouldContinue = parseInput(words);
+				shouldContinue = parseInput(Console.ReadLine ());
 			}
 		}
 
 
-		bool parseInput(string[] words)
+		bool parseInput(string input)
 		{
+			string[] words = input.Split( new[] {' ', '\t'}, 100);
+
 			if (words == null || words.Length == 0)
 				return true;
 
@@ -34,14 +37,20 @@ namespace IffyPlayer
 			case "q":
 			case "quit":
 				return false;
-
-			default:
-				report ("I don't know the word " + words [0] + ".");
-				break;
 			}
+
+
+
+
+
 			return true;
 		}
 
+
+		private void symbolicate(string text, SymbolicationTask task)
+		{
+
+		}
 
 
 		void report(string text)
@@ -49,6 +58,10 @@ namespace IffyPlayer
 			Console.WriteLine (text);
 		}
 
+
+		private void traverse(object[] symbols)
+		{
+		}
 	}
 }
 

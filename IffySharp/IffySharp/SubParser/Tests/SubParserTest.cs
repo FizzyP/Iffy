@@ -8,7 +8,7 @@ namespace IffySharp.SubParser.Test
 	{
 		public static void test()
 		{
-			Dispatch._("naked time");
+			Dispatch.Instance.dispatch("naked time");
 			Dispatch._ (COS.Tok, 3.141592);
 		}
 	}

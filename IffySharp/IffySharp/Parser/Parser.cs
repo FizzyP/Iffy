@@ -1,16 +1,43 @@
 ﻿using System;
+using System.Linq;
 using IffySharp.SubParser;
+using IffySharp.Simulation;
+using EeekSoft.Text;
 
 namespace IffySharp.Parser
 {
 	public class Parser
 	{
-		public Parser (Dispatch go )
+		SymbolicKnowledge knowledge;
+
+		public Parser (Dispatch exec, SymbolicKnowledge knowledge)
 		{
+			this.knowledge = knowledge;
 		}
 
-		void parse(string text)
+		public void parse(string text)
 		{
+			StringSearchResult[] results = findWordsInString (text);
+
+			// Write all results  
+			foreach(StringSearchResult r in results)
+			{
+				Console.WriteLine("Keyword='{0}', Index={1}", r.Keyword, r.Index);
+
+			}
+		}
+
+		private StringSearchResult[] findWordsInString(string text)
+		{
+			IStringSearchAlgorithm searchAlg = new StringSearch();
+			searchAlg.Keywords = knowledge.AllWords.ToArray ();
+			return searchAlg.FindAll(text);
+		}
+
+		private string scrubString(string text)
+		{
+			//	TODO elimniate repeat whitespace and apply ToLower
+			return text;
 		}
 	}
 }
