@@ -87,6 +87,7 @@
     <Compile Include="StdLib\Test\TestBlockConfigurator.cs" />
     <Compile Include="StdLib\Words\SymbolicToken.cs" />
     <Compile Include="StdLib\Words\DirectionToken.cs" />
+    <Compile Include="Exceptions\ParsingException.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
