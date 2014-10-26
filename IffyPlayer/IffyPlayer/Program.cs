@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using IffySharp.Test;
 using IffySharp.Parser;
+using IffySharp.StdLib;
 
 namespace IffyPlayer
 {
@@ -19,7 +20,9 @@ namespace IffyPlayer
 			Console.WriteLine ("################################################");
 			Console.WriteLine ();
 
-			var tt = new TempTerm (parser);
+			var simulation = TestSimulationFactory.build ();
+
+			var tt = new TempTerm (simulation.parser);
 			tt.termLoop ();
 
 			Console.WriteLine ();

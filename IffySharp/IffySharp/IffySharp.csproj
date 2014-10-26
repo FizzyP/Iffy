@@ -84,6 +84,7 @@
     <Compile Include="StdLib\Player\PlayerPerceptionCause.cs" />
     <Compile Include="Simulation\Aspects\KnowledgeAspect.cs" />
     <Compile Include="StdLib\Test\TestSimulationFactory.cs" />
+    <Compile Include="StdLib\Test\TestBlockConfigurator.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -96,7 +97,6 @@
   -->
   <ItemGroup>
     <Folder Include="Simulation\Player\" />
-    <Folder Include="Simulation\Renderer\" />
     <Folder Include="Simulation\World\" />
     <Folder Include="Simulation\World\Tests\" />
     <Folder Include="Simulation\Causes\Temp\" />
