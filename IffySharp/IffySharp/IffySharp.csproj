@@ -85,6 +85,8 @@
     <Compile Include="Simulation\Aspects\KnowledgeAspect.cs" />
     <Compile Include="StdLib\Test\TestSimulationFactory.cs" />
     <Compile Include="StdLib\Test\TestBlockConfigurator.cs" />
+    <Compile Include="StdLib\Words\SymbolicToken.cs" />
+    <Compile Include="StdLib\Words\DirectionToken.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -112,5 +114,6 @@
     <Folder Include="StdLib\" />
     <Folder Include="StdLib\Game\" />
     <Folder Include="StdLib\Test\" />
+    <Folder Include="StdLib\Words\" />
   </ItemGroup>
 </Project>

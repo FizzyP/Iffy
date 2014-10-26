@@ -12,6 +12,7 @@ namespace IffySharp.StdLib
 			MapLocationAspect.imbue (this, startLoc);
 			var perception = new PlayerPerceptionCause (this);
 			PerceptionAspect.imbue (this, perception);
+			KnowledgeAspect.imbue (this);
 		}
 	}
 }
