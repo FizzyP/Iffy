@@ -6,10 +6,12 @@ namespace IffyPlayer
 {
 	public class TempTerm
 	{
-		public delegate void SymbolicationTask(object[] symbols);
+
+		private Parser parser;
 
 		public TempTerm (Parser parser)
 		{
+			this.parser = parser;
 		}
 
 		public void termLoop()
@@ -39,20 +41,10 @@ namespace IffyPlayer
 				return false;
 			}
 
-
-
-
-
+			parser.parse (input);
 			return true;
 		}
-
-
-		private void symbolicate(string text, SymbolicationTask task)
-		{
-
-		}
-
-
+			
 		void report(string text)
 		{
 			Console.WriteLine (text);

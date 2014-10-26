@@ -18,6 +18,7 @@ namespace IffySharp.Simulation
 				assoc = Associations [word];
 			} else {
 				assoc = new WordAssociation (word);
+				Associations [word] = assoc;
 			}
 			assoc.Add (obj);
 		}

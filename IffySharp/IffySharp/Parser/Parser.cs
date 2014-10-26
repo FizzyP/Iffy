@@ -8,7 +8,9 @@ namespace IffySharp.Parser
 {
 	public class Parser
 	{
-		SymbolicKnowledge knowledge;
+		public delegate void SymbolicationTask(object[] symbols);
+
+		private SymbolicKnowledge knowledge;
 
 		public Parser (Dispatch exec, SymbolicKnowledge knowledge)
 		{
@@ -17,7 +19,7 @@ namespace IffySharp.Parser
 
 		public void parse(string text)
 		{
-			StringSearchResult[] results = findWordsInString (text);
+			StringSearchResult[] results = findWordsInString (scrubString(text));
 
 			// Write all results  
 			foreach(StringSearchResult r in results)
