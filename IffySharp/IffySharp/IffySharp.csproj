@@ -89,7 +89,6 @@
   -->
   <ItemGroup>
     <Folder Include="Simulation\Player\" />
-    <Folder Include="Simulation\Renderer\" />
     <Folder Include="Simulation\World\" />
     <Folder Include="Simulation\World\Tests\" />
     <Folder Include="Simulation\Causes\Temp\" />
