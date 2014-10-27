@@ -41,7 +41,12 @@ namespace IffySharp.Parser
 		private void resolveValidDispatches(List<ValidDispatch> dispatches)
 		{
 			if (dispatches.Count == 1) {
-				Dispatch.dispatch (executor, dispatches [0].dispatchArgs);
+				try {
+					Dispatch.dispatch (executor, dispatches [0].dispatchArgs);
+				}
+				catch {
+					throw new ImplementationError ("Dispatch.isValid() not backed by Dispatch.dispatch() method.");
+				}
 			} else if (dispatches.Count == 0) {
 				Console.WriteLine ("That sentence had no meanings.");
 			} else {
@@ -129,8 +134,6 @@ namespace IffySharp.Parser
 		}
 	
 
-		// public delegate void ParsingTask(object[] symbols, int count);
-
 		private static void dummyParsingTask(object[] symbols, int count)
 		{
 			Console.WriteLine (count);
@@ -171,7 +174,12 @@ namespace IffySharp.Parser
 					if (isValid) {
 						var validDispatch = new ValidDispatch();
 						validDispatch.dispatchArgs = (object[]) trimmedSymbols.Clone();
-						validDispatch.description = Dispatch.getDescription(exec, trimmedSymbols);
+						try {
+							validDispatch.description = Dispatch.getDescription(exec, trimmedSymbols);
+						}
+						catch {
+							validDispatch.description = "(no description given)";
+						}
 						validDispatches.Add(validDispatch);
 					}
 
