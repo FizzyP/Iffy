@@ -29,7 +29,7 @@ namespace IffySharp.Parser
 			var validDispatchFinder = new ValidDispatchFinderParsingTask (executor);
 			traverseTokens (tokenMap, text.Length, new ParsingTask (validDispatchFinder.task));
 
-//			traverseTokens (tokenMap, text.Length, new ParsingTask (dummyParsingTask));
+			resolveValidDispatches (validDispatchFinder.validDispatches);
 
 			// Write all results  
 			foreach(StringSearchResult r in results)
@@ -38,8 +38,26 @@ namespace IffySharp.Parser
 			}
 		}
 
+		private void resolveValidDispatches(List<ValidDispatch> dispatches)
+		{
+			if (dispatches.Count == 1) {
+				Dispatch.dispatch (executor, dispatches [0].dispatchArgs);
+			} else if (dispatches.Count == 0) {
+				Console.WriteLine ("That sentence had no meanings.");
+			} else {
+				Console.WriteLine ("That sentence was ambiguous.");
+				foreach (ValidDispatch dispatch in dispatches) {
+					Console.WriteLine ("\t" + dispatch.description);
+				}
+			}
+
+		}
+
 		private void traverseTokens(Dictionary<int, MatchedToken> tokenMap, int length, ParsingTask task)
 		{
+			if (!tokenMap.ContainsKey(0))
+				return;
+
 			object[] tokens = new object[length];
 			recursivelyTraverseTokens (tokenMap, tokenMap[0], length, tokens, 0, task);
 		}
@@ -152,8 +170,8 @@ namespace IffySharp.Parser
 					bool isValid = Dispatch.isValid(exec, trimmedSymbols);
 					if (isValid) {
 						var validDispatch = new ValidDispatch();
-						validDispatch.dispatchArgs = (object[]) symbols.Clone();
-						validDispatch.description = Dispatch.getDescription(exec, symbols);
+						validDispatch.dispatchArgs = (object[]) trimmedSymbols.Clone();
+						validDispatch.description = Dispatch.getDescription(exec, trimmedSymbols);
 						validDispatches.Add(validDispatch);
 					}
 

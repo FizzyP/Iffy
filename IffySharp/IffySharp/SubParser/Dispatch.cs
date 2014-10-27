@@ -27,20 +27,23 @@ namespace IffySharp.SubParser
 		}
 
 
-		public static bool dispatch(Dispatch exec, object[] args)
+		public static void dispatch(Dispatch exec, object[] args)
 		{
 			switch (args.Length) {
 			case 0:
-				return false;
+				return;
 
 			case 1:
-				return (exec as dynamic).dispatch ((dynamic) args [0]);
+				(exec as dynamic).dispatch ((dynamic) args [0]);
+				return;
 
 			case 2:
-				return (exec as dynamic).dispatch ((dynamic) args [0], (dynamic) args[1]);
+				(exec as dynamic).dispatch ((dynamic) args [0], (dynamic) args[1]);
+				return;
 
 			case 3:
-				return (exec as dynamic).dispatch ((dynamic) args [0], (dynamic) args[1], (dynamic) args[2]);
+				(exec as dynamic).dispatch ((dynamic) args [0], (dynamic) args[1], (dynamic) args[2]);
+				return;
 
 			default:
 				throw new ImplementationError ("Too many arguemnts.");
