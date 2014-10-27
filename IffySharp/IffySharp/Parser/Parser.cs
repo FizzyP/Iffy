@@ -70,7 +70,6 @@ namespace IffySharp.Parser
 		private void recursivelyTraverseTokens(Dictionary<int, MatchedToken> tokenMap, MatchedToken currToken, int length, object[] tokens, int tokenIndex, ParsingTask task)
 		{
 			object[] assocs = currToken.associatedObjects;
-//			tokenIndex++;
 
 			//	Can we extend this any farther?
 			//	If not then we're at the end, so invoke the task on each way of copmleting the token list.
