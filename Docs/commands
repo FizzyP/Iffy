@@ -1,0 +1,14 @@
+
+
+
+Commands
+	look, l <direction>?
+	examine, x
+
+	(walk | step | run) <direction>
+	inventory, i
+
+	score
+
+
+

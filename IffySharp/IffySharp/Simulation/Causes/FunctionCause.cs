@@ -26,6 +26,7 @@ namespace IffySharp.Simulation
             {
                 addDependency(cause);
             }
+			IsDirty = true;
         }
 
         public override void onUpdate()

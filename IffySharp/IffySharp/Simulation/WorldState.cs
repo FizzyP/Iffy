@@ -9,6 +9,6 @@ namespace IffySharp.Simulation
     [Serializable]
     public class WorldState
     {
-        private List<World> worlds;
+		public readonly List<World> worlds = new List<World>();
     }
 }

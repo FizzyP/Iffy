@@ -1,7 +1,8 @@
 ﻿using System;
+using IffySharp.Simulation;
 using IffySharp.Simulation.Aspects;
 
-namespace IffySharp.Simulation
+namespace IffySharp.StdLib
 {
 	public class Player : WorldObjectBase
 	{
@@ -11,6 +12,7 @@ namespace IffySharp.Simulation
 			MapLocationAspect.imbue (this, startLoc);
 			var perception = new PlayerPerceptionCause (this);
 			PerceptionAspect.imbue (this, perception);
+			KnowledgeAspect.imbue (this);
 		}
 	}
 }

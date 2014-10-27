@@ -1,12 +1,17 @@
 ﻿using System;
+using IffySharp.Parser;
+using EeekSoft.Text;
 
 namespace IffyPlayer
 {
 	public class TempTerm
 	{
 
-		public TempTerm ()
+		private Parser parser;
+
+		public TempTerm (Parser parser)
 		{
+			this.parser = parser;
 		}
 
 		public void termLoop()
@@ -17,15 +22,15 @@ namespace IffyPlayer
 			{
 				Console.WriteLine ();
 				Console.Write ("> ");
-				string input = Console.ReadLine ();
-				string[] words = input.Split( new[] {' ', '\t'}, 100);
-				shouldContinue = parseInput(words);
+				shouldContinue = parseInput(Console.ReadLine ());
 			}
 		}
 
 
-		bool parseInput(string[] words)
+		bool parseInput(string input)
 		{
+			string[] words = input.Split( new[] {' ', '\t'}, 100);
+
 			if (words == null || words.Length == 0)
 				return true;
 
@@ -34,21 +39,21 @@ namespace IffyPlayer
 			case "q":
 			case "quit":
 				return false;
-
-			default:
-				report ("I don't know the word " + words [0] + ".");
-				break;
 			}
+
+			parser.parse (input);
 			return true;
 		}
-
-
-
+			
 		void report(string text)
 		{
 			Console.WriteLine (text);
 		}
 
+
+		private void traverse(object[] symbols)
+		{
+		}
 	}
 }
 
