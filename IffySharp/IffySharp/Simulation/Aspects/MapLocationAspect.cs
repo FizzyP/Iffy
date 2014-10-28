@@ -43,6 +43,14 @@ namespace IffySharp.Simulation.Aspects
             return obj;
         }
 
+		public static MapLocationCause getMapLocationCause(WorldObjectBase obj)
+		{
+			if (!obj.hasAttribute (kMapLocationKey))
+				return null;
+			else
+				return (MapLocationCause) obj [kMapLocationKey];
+		}
+
 		public static MapLocationState getMapLocationState(WorldObjectBase obj)
 		{
 			if (!obj.hasAttribute (kMapLocationKey))
@@ -50,5 +58,6 @@ namespace IffySharp.Simulation.Aspects
 			else
 				return ((MapLocationCause) obj [kMapLocationKey]).Value;
 		}
-    }
+
+	}
 }

@@ -66,7 +66,6 @@
     <Compile Include="Simulation\Causes\PerceptionCause.cs" />
     <Compile Include="Simulation\Aspects\EventAspect.cs" />
     <Compile Include="Simulation\Causes\Temp\EchoPerceptionCause.cs" />
-    <Compile Include="Simulation\Sensation\PerceptualRequirements.cs" />
     <Compile Include="SubParser\Dispatch.cs" />
     <Compile Include="SubParser\UncaughtDispatchException.cs" />
     <Compile Include="SubParser\Tests\SubParserTest.cs" />
@@ -90,6 +89,11 @@
     <Compile Include="Exceptions\ParsingException.cs" />
     <Compile Include="SubParser\TerminalDispatch.cs" />
     <Compile Include="StdLib\StdTerminalDispatch.cs" />
+    <Compile Include="Simulation\Causes\GravityCause.cs" />
+    <Compile Include="Simulation\Aspects\RelativeLocation\RelativeLocationAspect.cs" />
+    <Compile Include="Simulation\Aspects\RelativeLocation\Preposition.cs" />
+    <Compile Include="Simulation\Aspects\RelativeLocation\RelativeLocationState.cs" />
+    <Compile Include="Simulation\Aspects\RelativeLocation\RelativeLocationCause.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -106,7 +110,6 @@
     <Folder Include="Simulation\World\Tests\" />
     <Folder Include="Simulation\Causes\Temp\" />
     <Folder Include="Simulation\Events\" />
-    <Folder Include="Simulation\Sensation\" />
     <Folder Include="SubParser\" />
     <Folder Include="SubParser\Tests\" />
     <Folder Include="Simulation\Camera\" />
@@ -118,5 +121,6 @@
     <Folder Include="StdLib\Game\" />
     <Folder Include="StdLib\Test\" />
     <Folder Include="StdLib\Words\" />
+    <Folder Include="Simulation\Aspects\RelativeLocation\" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,11 @@
 ﻿using System;
-using IffySharp.Parser;
+using System.Text;
+using System.Threading;
 using EeekSoft.Text;
+
+using IffySharp.Parser;
+using IffySharp.Simulation;
+
 
 namespace IffyPlayer
 {
@@ -8,21 +13,56 @@ namespace IffyPlayer
 	{
 
 		private Parser parser;
+		private Simulation simulation;
 
-		public TempTerm (Parser parser)
+		public TempTerm (Simulation simulation)
 		{
-			this.parser = parser;
+			this.parser = simulation.parser;
+			this.simulation = simulation;
 		}
 
 		public void termLoop()
 		{
 			bool shouldContinue = true;
+			var lastUpdateTime = DateTime.Now;
+			var inputBuilder = new StringBuilder ();
+
+
 
 			while (shouldContinue)
 			{
 				Console.WriteLine ();
 				Console.Write ("> ");
-				shouldContinue = parseInput(Console.ReadLine ());
+
+				inputBuilder.Clear ();
+
+				while (true) {
+					if (Console.KeyAvailable) {
+						var keyInfo = Console.ReadKey (true);
+						var c = keyInfo.KeyChar;
+
+						Console.Write (c);
+					
+						if (keyInfo.Key == ConsoleKey.Enter) {
+							string text = inputBuilder.ToString ();
+
+							shouldContinue = parseInput (text);
+							break;
+						}
+						inputBuilder.Append (c);
+
+					} else {
+						//	Update every milisecond
+						var now = DateTime.Now;
+						var dt = now.Subtract(lastUpdateTime).TotalSeconds;
+						lastUpdateTime = now;
+
+						simulation.advanceTime (dt);
+
+						Thread.Sleep (2);
+					}
+				}
+
 			}
 		}
 
@@ -50,10 +90,6 @@ namespace IffyPlayer
 			Console.WriteLine (text);
 		}
 
-
-		private void traverse(object[] symbols)
-		{
-		}
 	}
 }
 

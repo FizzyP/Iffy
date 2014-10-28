@@ -22,7 +22,7 @@ namespace IffyPlayer
 
 			var simulation = TestSimulationFactory.build ();
 
-			var tt = new TempTerm (simulation.parser);
+			var tt = new TempTerm (simulation);
 			tt.termLoop ();
 
 			Console.WriteLine ();

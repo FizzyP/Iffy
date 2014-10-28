@@ -38,7 +38,7 @@ namespace IffySharp.Simulation
 		//	DateTime ticks are long
 		private SortedDictionary<long, List<Cause>> eventQueue = new SortedDictionary<long, List<Cause>>();
 
-		void queueCause(DateTime atTime, Cause cause)
+		public void enqueueCause(DateTime atTime, Cause cause)
 		{
 			long time = atTime.Ticks;
 			if (!eventQueue.ContainsKey (time)) {
