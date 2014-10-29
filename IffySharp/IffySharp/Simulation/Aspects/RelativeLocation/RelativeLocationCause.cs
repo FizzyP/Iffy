@@ -32,7 +32,10 @@ namespace IffySharp.Simulation.Aspects
 				return relations[obj];
 			}
 			set {
-				relations [obj] = value;
+				if (value == null)
+					relations.Remove (obj);
+				else
+					relations [obj] = value;
 				IsDirty = true;
 			}
 		}
