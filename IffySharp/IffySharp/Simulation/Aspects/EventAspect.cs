@@ -13,7 +13,7 @@ namespace IffySharp.Simulation.Aspects
 			return obj;
 		}
 
-		public static EventCause getEventCause(WorldObjectBase obj)
+		public static EventCause getCause(WorldObjectBase obj)
 		{
 			if (!obj.hasAttribute (kEventKey))
 				return null;

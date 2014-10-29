@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Simulation\Aspects\MapLocationAspect.cs" />
     <Compile Include="Simulation\Causes\BinOpCause.cs" />
     <Compile Include="Simulation\Causes\Cause.cs" />
     <Compile Include="Simulation\Causes\FunctionCause.cs" />
@@ -89,11 +88,14 @@
     <Compile Include="Exceptions\ParsingException.cs" />
     <Compile Include="SubParser\TerminalDispatch.cs" />
     <Compile Include="StdLib\StdTerminalDispatch.cs" />
-    <Compile Include="Simulation\Causes\GravityCause.cs" />
     <Compile Include="Simulation\Aspects\RelativeLocation\RelativeLocationAspect.cs" />
     <Compile Include="Simulation\Aspects\RelativeLocation\Preposition.cs" />
     <Compile Include="Simulation\Aspects\RelativeLocation\RelativeLocationState.cs" />
     <Compile Include="Simulation\Aspects\RelativeLocation\RelativeLocationCause.cs" />
+    <Compile Include="Simulation\Aspects\GravitationAspect\GravityCause.cs" />
+    <Compile Include="Simulation\Aspects\GravitationAspect\GravityAspect.cs" />
+    <Compile Include="Simulation\Aspects\MapLocationAspect\MapLocationAspect.cs" />
+    <Compile Include="Simulation\Aspects\MapLocationAspect\MapLocationCause.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -122,5 +124,7 @@
     <Folder Include="StdLib\Test\" />
     <Folder Include="StdLib\Words\" />
     <Folder Include="Simulation\Aspects\RelativeLocation\" />
+    <Folder Include="Simulation\Aspects\GravitationAspect\" />
+    <Folder Include="Simulation\Aspects\MapLocationAspect\" />
   </ItemGroup>
 </Project>

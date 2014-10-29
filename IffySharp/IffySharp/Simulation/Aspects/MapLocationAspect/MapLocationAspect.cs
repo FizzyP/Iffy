@@ -7,20 +7,6 @@ using System.Threading.Tasks;
 namespace IffySharp.Simulation.Aspects
 {
 
-    public class MapLocationState
-    {
-		public World world;
-        public IntVector3 position;
-        public Vector3 velocity;
-    }
-
-    class MapLocationCause : ValueCause<MapLocationState>
-    {
-        public MapLocationCause(MapLocationState initialLocation)
-            : base(initialLocation)
-        { }
-    }
-
     abstract
 	class MapLocationAspect
     {
@@ -43,7 +29,7 @@ namespace IffySharp.Simulation.Aspects
             return obj;
         }
 
-		public static MapLocationCause getMapLocationCause(WorldObjectBase obj)
+		public static MapLocationCause getCause(WorldObjectBase obj)
 		{
 			if (!obj.hasAttribute (kMapLocationKey))
 				return null;

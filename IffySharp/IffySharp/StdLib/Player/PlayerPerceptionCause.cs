@@ -10,7 +10,7 @@ namespace IffySharp.StdLib
 		public readonly SymbolicKnowledge Knowledge;
 
 		public PlayerPerceptionCause (Player player)
-			: base (EventAspect.getEventCause ( MapLocationAspect.getMapLocationState(player).world))
+			: base (EventAspect.getCause ( MapLocationAspect.getMapLocationState(player).world))
 		{
 			IsLazy = false;
 			this.player = player;

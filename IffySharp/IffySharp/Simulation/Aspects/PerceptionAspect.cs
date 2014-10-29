@@ -18,13 +18,13 @@ namespace IffySharp.Simulation.Aspects
 			obj [kEventListeningKey] = perception;
 
 			//	Hook it up to listen to the world
-			EventCause worldEvents = EventAspect.getEventCause (objLoc.world);
+			EventCause worldEvents = EventAspect.getCause (objLoc.world);
 			perception.addDependency (worldEvents);
 
 			return obj;
 		}
 
-		public static PerceptionCause getPerceptionCause(WorldObjectBase obj)
+		public static PerceptionCause getCause(WorldObjectBase obj)
 		{
 			if (!obj.hasAttribute (kEventListeningKey))
 				return null;

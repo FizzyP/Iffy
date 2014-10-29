@@ -19,7 +19,7 @@ namespace IffySharp.Simulation.Test
 			var spot = new IntVector3 (0, 0, 0);
 			var block = world.getBlock (spot);
 
-			var eventCause = EventAspect.getEventCause (world);
+			var eventCause = EventAspect.getCause (world);
 
 			//	Make block listen?
 			PerceptionAspect.imbue (block, new EchoPerceptionCause(eventCause));

@@ -23,7 +23,7 @@ namespace IffySharp.Simulation
 
 		public static Camera new_FollowingObject(WorldObjectBase obj, IIffyRenderer renderer)
 		{
-			var perception = PerceptionAspect.getPerceptionCause (obj);
+			var perception = PerceptionAspect.getCause (obj);
 			if (perception == null)
 				throw new ArgumentException ("A camera must be built from objects imbued with perception.");
 			var messages = perception.InnerMonologue;
