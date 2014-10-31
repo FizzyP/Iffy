@@ -16,9 +16,13 @@ namespace IffySharp.StdLib.Vocab
 			knowledge.associate (WALK._.Name, WALK._);
 
 			knowledge.associate (NORTH._.Name, NORTH._);
+			knowledge.associate ("n", NORTH._);
 			knowledge.associate (SOUTH._.Name, SOUTH._);
+			knowledge.associate ("s", SOUTH._);
 			knowledge.associate (EAST._.Name, EAST._);
+			knowledge.associate ("e", EAST._);
 			knowledge.associate (WEST._.Name, WEST._);
+			knowledge.associate ("w", WEST._);
 		}
 	}
 

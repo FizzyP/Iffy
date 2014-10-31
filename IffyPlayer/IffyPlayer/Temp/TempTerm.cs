@@ -44,12 +44,13 @@ namespace IffyPlayer
 					
 						if (keyInfo.Key == ConsoleKey.Enter) {
 							Console.WriteLine ();
-							string text = inputBuilder.ToString ();
+							string text = inputBuilder.ToString ().ToLowerInvariant ();
 
 							shouldContinue = parseInput (text);
 							break;
 						}
-						Console.Write (c);
+
+						writeKeyToConsole(keyInfo);
 						inputBuilder.Append (c);
 
 					} else {
@@ -67,6 +68,17 @@ namespace IffyPlayer
 			}
 		}
 
+        private void writeKeyToConsole(ConsoleKeyInfo key)
+        {
+			if (key.Key == ConsoleKey.Backspace)
+            {
+                Console.Write("\b \b");  //	In visual studio console the backspace doesn't overwrite for some reason.
+            }
+            else
+            {
+				Console.Write (key.KeyChar);
+            }
+        }
 
 		bool parseInput(string input)
 		{
