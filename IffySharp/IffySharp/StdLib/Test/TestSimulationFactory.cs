@@ -34,6 +34,9 @@ namespace IffySharp.StdLib
 			var playerKnowledge = KnowledgeAspect.getKnowledge (player);
 
 			WalkTerminalCommand.addKnowledge (playerKnowledge);
+			LookTerminalCommand.addKnowledge (playerKnowledge);
+
+			playerKnowledge.associate ("self", player);
 
 			return sim;
 		}

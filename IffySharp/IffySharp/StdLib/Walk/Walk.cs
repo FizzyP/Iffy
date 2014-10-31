@@ -26,6 +26,7 @@ namespace IffySharp.StdLib
 		}
 	}
 
+
 	public partial class StdTerminalDispatch
 	{
 		//	Walk in a direction

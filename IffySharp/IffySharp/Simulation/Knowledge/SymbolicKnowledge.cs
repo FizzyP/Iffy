@@ -48,14 +48,6 @@ namespace IffySharp.Simulation
 		}
 
 
-//		public SortedSet<object> this[string word]
-//		{
-//			get {
-//				if (Associations.ContainsKey (word)) {
-//				}
-//			}
-//		}
-
 		public class WordAssociation : HashSet<object>
 		{
 			public readonly string Word;
