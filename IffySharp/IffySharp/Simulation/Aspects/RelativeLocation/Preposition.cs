@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IffySharp
+namespace IffySharp.Simulation.Aspects
 {
 	abstract
 	public class Preposition

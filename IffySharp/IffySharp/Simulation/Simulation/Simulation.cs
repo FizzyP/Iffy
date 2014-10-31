@@ -15,9 +15,10 @@ namespace IffySharp.Simulation
 	public class Simulation
 	{
 		private WorldState state;
-		public readonly Dispatch terminalDispatch;
+		public readonly TerminalDispatch terminalDispatch;
 		public readonly Player player;
 		public readonly Camera camera;
+		public readonly SimulationDispatch simulationDispatch; 
 
 		public readonly IffySharp.Parser.Parser parser;
 		private IIffyRenderer renderer;
@@ -34,6 +35,7 @@ namespace IffySharp.Simulation
 
 			player = new Player (startBlock);
 
+			this.simulationDispatch = new SimulationDispatch (this);	//	not safe but doesn't matter.  Won't use dispatch until initialized.
 			this.terminalDispatch = dispatch;
 			this.parser = new IffySharp.Parser.Parser (terminalDispatch, KnowledgeAspect.getKnowledge (player));
 

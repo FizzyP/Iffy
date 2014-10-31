@@ -41,14 +41,15 @@ namespace IffyPlayer
 						var keyInfo = Console.ReadKey (true);
 						var c = keyInfo.KeyChar;
 
-						Console.Write (c);
 					
 						if (keyInfo.Key == ConsoleKey.Enter) {
+							Console.WriteLine ();
 							string text = inputBuilder.ToString ();
 
 							shouldContinue = parseInput (text);
 							break;
 						}
+						Console.Write (c);
 						inputBuilder.Append (c);
 
 					} else {

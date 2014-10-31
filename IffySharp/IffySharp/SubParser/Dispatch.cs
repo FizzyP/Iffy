@@ -1,6 +1,6 @@
 ﻿using System;
 
-using IffySharp.StdLib.Vocab;
+//using IffySharp.StdLib;
 
 namespace IffySharp.SubParser
 {

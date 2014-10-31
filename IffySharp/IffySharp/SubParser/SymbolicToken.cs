@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IffySharp.StdLib.Vocab
+namespace IffySharp.SubParser
 {
 	public class SymbolicToken
 	{

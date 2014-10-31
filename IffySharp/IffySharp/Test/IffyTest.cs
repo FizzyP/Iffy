@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 using IffySharp.Simulation.Test;
-using IffySharp.SubParser.Test;
 
 
 namespace IffySharp.Test
@@ -16,7 +15,6 @@ namespace IffySharp.Test
         {
 			CauseTest.test ();
 			WorldTest.test();
-			SubParserTest.test ();
 			CameraTest.test ();
         }
     }

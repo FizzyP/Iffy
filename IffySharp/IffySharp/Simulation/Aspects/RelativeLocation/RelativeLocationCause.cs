@@ -9,7 +9,7 @@ namespace IffySharp.Simulation.Aspects
 	{
 		private readonly RelativeLocationState relations = new RelativeLocationState();
 
-		public IReadOnlyDictionary<WorldObjectBase, Preposition> Relations {
+		public IReadOnlyDictionary<WorldObjectBase, RelativeLocationLink> Relations {
 			get {
 				return relations;
 			}
@@ -25,7 +25,7 @@ namespace IffySharp.Simulation.Aspects
 		{
 		}
 
-		public Preposition this[WorldObjectBase obj]
+		public RelativeLocationLink this[WorldObjectBase obj]
 		{
 			get {
 				update ();
