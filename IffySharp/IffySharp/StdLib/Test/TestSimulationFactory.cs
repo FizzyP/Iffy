@@ -33,7 +33,7 @@ namespace IffySharp.StdLib
 			var player = sim.player;
 			var playerKnowledge = KnowledgeAspect.getKnowledge (player);
 
-			DirectionToken.addKnowledge (playerKnowledge);
+			WalkTerminalCommand.addKnowledge (playerKnowledge);
 
 			return sim;
 		}

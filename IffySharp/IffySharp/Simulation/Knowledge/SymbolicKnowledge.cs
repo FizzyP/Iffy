@@ -56,7 +56,7 @@ namespace IffySharp.Simulation
 //			}
 //		}
 
-		public class WordAssociation : SortedSet<object>
+		public class WordAssociation : HashSet<object>
 		{
 			public readonly string Word;
 

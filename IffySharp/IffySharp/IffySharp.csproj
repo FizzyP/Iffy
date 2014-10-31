@@ -97,6 +97,7 @@
     <Compile Include="Simulation\Simulation\Simulation.cs" />
     <Compile Include="Simulation\Simulation\SimulationDispatch.cs" />
     <Compile Include="SubParser\SymbolicToken.cs" />
+    <Compile Include="StdLib\Movement\Walk.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -128,5 +129,6 @@
     <Folder Include="Simulation\Aspects\GravitationAspect\" />
     <Folder Include="Simulation\Aspects\MapLocationAspect\" />
     <Folder Include="Simulation\Simulation\" />
+    <Folder Include="StdLib\Movement\" />
   </ItemGroup>
 </Project>
