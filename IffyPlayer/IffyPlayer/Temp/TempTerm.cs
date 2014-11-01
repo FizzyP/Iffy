@@ -48,11 +48,9 @@ namespace IffyPlayer
 
 							shouldContinue = parseInput (text);
 							break;
-						} else if (keyInfo.Key == ConsoleKey.Backspace) {
 						}
 
-						writeKeyToConsole(keyInfo);
-						writeKeyToInput(keyInfo, inputBuilder);
+						aceptKey(keyInfo, inputBuilder);
 					
 					} else {
 						//	Update every milisecond
@@ -69,28 +67,19 @@ namespace IffyPlayer
 			}
 		}
 
-		private void writeKeyToInput(ConsoleKeyInfo key, StringBuilder input)
+		private void aceptKey(ConsoleKeyInfo key, StringBuilder input)
 		{
 			if (key.Key == ConsoleKey.Backspace) {
 				if (input.Length > 0) {
 					input.Remove (input.Length - 1, 1);
+					Console.Write ("\b \b");  //	In visual studio console the backspace doesn't overwrite for some reason.
 				}
-			} else {
+			}
+			else {
 				input.Append (key.KeyChar);
+				Console.Write (key.KeyChar);
 			}
 		}
-
-        private void writeKeyToConsole(ConsoleKeyInfo key)
-        {
-			if (key.Key == ConsoleKey.Backspace)
-            {
-                Console.Write("\b \b");  //	In visual studio console the backspace doesn't overwrite for some reason.
-            }
-            else
-            {
-				Console.Write (key.KeyChar);
-            }
-        }
 
 		bool parseInput(string input)
 		{
