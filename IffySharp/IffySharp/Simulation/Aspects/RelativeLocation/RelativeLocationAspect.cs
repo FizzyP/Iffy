@@ -20,6 +20,7 @@ namespace IffySharp.Simulation.Aspects
 				return null;
 			else
 				return (RelativeLocationCause) obj [kRelLocKey];
-		}	}
+		}
+	}
 }
 

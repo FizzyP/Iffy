@@ -101,6 +101,8 @@
     <Compile Include="StdLib\Look\Look.cs" />
     <Compile Include="StdLib\Walk\WalkWords.cs" />
     <Compile Include="StdLib\Look\LookWords.cs" />
+    <Compile Include="Simulation\Aspects\SensibleAspect\SensibleAspect.cs" />
+    <Compile Include="Simulation\Aspects\SensibleAspect\SensationInterpretation.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -134,5 +136,6 @@
     <Folder Include="Simulation\Simulation\" />
     <Folder Include="StdLib\Look\" />
     <Folder Include="StdLib\Walk\" />
+    <Folder Include="Simulation\Aspects\SensibleAspect\" />
   </ItemGroup>
 </Project>

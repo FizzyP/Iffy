@@ -23,6 +23,9 @@ namespace IffySharp.StdLib
 			//	Hack just to get something on the screen.
 			this.InnerMonologue.Value = worldEvent.InternalDescription;
 
+			//	Determine if the event is perceived (assume yes for now)
+			//	Determine consequences of perception
+
 			SymbolicKnowledge newKnowledge = KnowledgeAspect.getKnowledge (player);
 			if (newKnowledge != null) {
 				learn(newKnowledge);
