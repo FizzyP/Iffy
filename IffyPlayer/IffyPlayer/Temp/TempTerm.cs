@@ -48,11 +48,12 @@ namespace IffyPlayer
 
 							shouldContinue = parseInput (text);
 							break;
+						} else if (keyInfo.Key == ConsoleKey.Backspace) {
 						}
 
 						writeKeyToConsole(keyInfo);
-						inputBuilder.Append (c);
-
+						writeKeyToInput(keyInfo, inputBuilder);
+					
 					} else {
 						//	Update every milisecond
 						var now = DateTime.Now;
@@ -65,6 +66,17 @@ namespace IffyPlayer
 					}
 				}
 
+			}
+		}
+
+		private void writeKeyToInput(ConsoleKeyInfo key, StringBuilder input)
+		{
+			if (key.Key == ConsoleKey.Backspace) {
+				if (input.Length > 0) {
+					input.Remove (input.Length - 1, 1);
+				}
+			} else {
+				input.Append (key.KeyChar);
 			}
 		}
 
