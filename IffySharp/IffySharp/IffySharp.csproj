@@ -79,7 +79,6 @@
     <Compile Include="Simulation\Aspects\KnowledgeAspect.cs" />
     <Compile Include="StdLib\Test\TestSimulationFactory.cs" />
     <Compile Include="StdLib\Test\TestBlockConfigurator.cs" />
-    <Compile Include="StdLib\Words\DirectionToken.cs" />
     <Compile Include="Exceptions\ParsingException.cs" />
     <Compile Include="SubParser\TerminalDispatch.cs" />
     <Compile Include="StdLib\StdTerminalDispatch.cs" />
@@ -103,6 +102,10 @@
     <Compile Include="StdLib\Look\LookWords.cs" />
     <Compile Include="Simulation\Aspects\SensibleAspect\SensibleAspect.cs" />
     <Compile Include="Simulation\Aspects\SensibleAspect\SensationInterpretation.cs" />
+    <Compile Include="Simulation\Actions\Movement\Movement.cs" />
+    <Compile Include="Simulation\Actions\Movement\MoveWords.cs" />
+    <Compile Include="Simulation\Simulation\SimulationWords.cs" />
+    <Compile Include="SubParser\InvalidDispatchException.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -137,5 +140,7 @@
     <Folder Include="StdLib\Look\" />
     <Folder Include="StdLib\Walk\" />
     <Folder Include="Simulation\Aspects\SensibleAspect\" />
+    <Folder Include="Simulation\Actions\" />
+    <Folder Include="Simulation\Actions\Movement\" />
   </ItemGroup>
 </Project>

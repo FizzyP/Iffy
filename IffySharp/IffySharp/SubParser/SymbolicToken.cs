@@ -10,6 +10,12 @@ namespace IffySharp.SubParser
 		{
 			Name = name;
 		}
+
+		override
+		public string ToString()
+		{
+			return Name;
+		}
 	}
 
 

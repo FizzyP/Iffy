@@ -18,12 +18,9 @@ namespace IffySharp.Simulation.Aspects
             return obj;
         }
 
-		public static WorldObjectBase imbue(WorldObjectBase obj, IntVector3 gridPosition, World world)
+		public static WorldObjectBase imbue(WorldObjectBase obj, Vector3 gridPosition, World world)
         {
-            var initialState = new MapLocationState();
-            initialState.position = gridPosition;
-            initialState.velocity = new Vector3(0,0,0);
-			initialState.world = world;
+			var initialState = new MapLocationState(world, gridPosition, new Vector3(0,0,0));
 
             obj[kMapLocationKey] = new MapLocationCause(initialState);
             return obj;

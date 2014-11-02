@@ -1,6 +1,5 @@
 ﻿
 using System;
-using IffySharp.StdLib.Vocab;
 using IffySharp.Simulation;
 
 

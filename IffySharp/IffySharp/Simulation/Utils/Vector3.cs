@@ -8,7 +8,7 @@ namespace IffySharp.Simulation
 {
     public class Vector3
     {
-        public double x, y, z;
+        public readonly double x, y, z;
 
         public Vector3(double xx, double yy, double zz)
         {
@@ -16,11 +16,22 @@ namespace IffySharp.Simulation
             y = yy;
             z = zz;
         }
-    }
+
+		static public Vector3 operator-(Vector3 l, Vector3 r)
+		{
+			return new Vector3(l.x - r.x, l.y - r.y, l.z - r.z);
+		}
+
+		static public Vector3 operator +(Vector3 l, Vector3 r)
+		{
+			return new Vector3(l.x + r.x, l.y + r.y, l.z + r.z);
+		}
+
+	}
 
     public class IntVector3
     {
-        public int x, y, z;
+        public readonly int x, y, z;
 
         public IntVector3(int xx, int yy, int zz)
         {

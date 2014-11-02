@@ -11,10 +11,10 @@ namespace IffySharp.Simulation
 	[Serializable]
 	public class World : WorldObjectBase
 	{
-		static readonly IntVector3 dim = new IntVector3(100, 100, 20);
-		static readonly IntVector3 center = new IntVector3(50, 50, 10);
+		static readonly Vector3 dim = new Vector3(100, 100, 20);
+		static readonly Vector3 center = new Vector3(50, 50, 10);
 
-		WorldBlock[, ,] blocks = new WorldBlock[dim.x, dim.y, dim.z];
+		WorldBlock[, ,] blocks = new WorldBlock[(int) dim.x, (int) dim.y, (int) dim.z];
 		WorldBlock defaultBlock = null;    //  All undefined blocks map to this
 
 		AbstractBlockConfigurator configurator;
@@ -26,7 +26,7 @@ namespace IffySharp.Simulation
 			EventAspect.imbue (this);
 		}
 
-		public WorldBlock peekBlock(IntVector3 spot)
+		public WorldBlock peekBlock(Vector3 spot)
 		{
 			//	Offset so (0,0,0) is here
 			spot += center;
@@ -37,9 +37,9 @@ namespace IffySharp.Simulation
 			{
 				return null;
 			}
-			var block = blocks[spot.x, spot.y, spot.z];
+			var block = blocks[(int) spot.x, (int) spot.y, (int) spot.z];
 			if (block == null) {
-				block = blocks[spot.x, spot.y, spot.z] = new WorldBlock();
+				block = blocks[(int) spot.x, (int) spot.y, (int) spot.z] = new WorldBlock();
 				//  Put the block in the spot
 				MapLocationAspect.imbue(block, spot, this);
 			}
@@ -47,7 +47,7 @@ namespace IffySharp.Simulation
 		}
 
 
-		public WorldBlock getBlock(IntVector3 spot)
+		public WorldBlock getBlock(Vector3 spot)
 		{
 			WorldBlock block = peekBlock(spot);
 

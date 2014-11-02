@@ -4,7 +4,6 @@ using IffySharp;
 using IffySharp.Simulation;
 using IffySharp.Simulation.Aspects;
 using IffySharp.Simulation.Test;
-using IffySharp.StdLib.Vocab;
 
 namespace IffySharp.StdLib
 {
@@ -12,9 +11,6 @@ namespace IffySharp.StdLib
 	public class TestSimulationFactory
 	{
 		//		public Simulation (WorldState state, IIffyRenderer renderer, World startWorld, WorldBlock startBlock)
-
-
-
 		static
 		public IffySharp.Simulation.Simulation build()
 		{
@@ -22,7 +18,7 @@ namespace IffySharp.StdLib
 			var configurator = new TestBlockConfigurator ();
 			var world = new World (configurator);
 			worldState.worlds.Add (world);
-			var startSpot = new IntVector3 (0, 0, 0);
+			var startSpot = new Vector3 (0, 0, 0);
 			var startBlock = world.getBlock (startSpot);
 
 			var renderer = new SimpleRenderer ();
