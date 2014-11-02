@@ -96,16 +96,20 @@
     <Compile Include="Simulation\Simulation\Simulation.cs" />
     <Compile Include="Simulation\Simulation\SimulationDispatch.cs" />
     <Compile Include="SubParser\SymbolicToken.cs" />
-    <Compile Include="StdLib\Walk\Walk.cs" />
-    <Compile Include="StdLib\Look\Look.cs" />
-    <Compile Include="StdLib\Walk\WalkWords.cs" />
-    <Compile Include="StdLib\Look\LookWords.cs" />
     <Compile Include="Simulation\Aspects\SensibleAspect\SensibleAspect.cs" />
     <Compile Include="Simulation\Aspects\SensibleAspect\SensationInterpretation.cs" />
     <Compile Include="Simulation\Actions\Movement\Movement.cs" />
     <Compile Include="Simulation\Actions\Movement\MoveWords.cs" />
     <Compile Include="Simulation\Simulation\SimulationWords.cs" />
     <Compile Include="SubParser\InvalidDispatchException.cs" />
+    <Compile Include="Simulation\Actions\Movement\DematerializationEvent.cs" />
+    <Compile Include="StdLib\Actions\Walk\Walk.cs" />
+    <Compile Include="StdLib\Actions\Walk\WalkWords.cs" />
+    <Compile Include="StdLib\Actions\Look\Look.cs" />
+    <Compile Include="StdLib\Actions\Look\LookWords.cs" />
+    <Compile Include="StdLib\Actions\Test\TestCommand.cs" />
+    <Compile Include="StdLib\Actions\Test\TestComandWords.cs" />
+    <Compile Include="Simulation\Simulation\Global.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -137,10 +141,10 @@
     <Folder Include="Simulation\Aspects\GravitationAspect\" />
     <Folder Include="Simulation\Aspects\MapLocationAspect\" />
     <Folder Include="Simulation\Simulation\" />
-    <Folder Include="StdLib\Look\" />
-    <Folder Include="StdLib\Walk\" />
     <Folder Include="Simulation\Aspects\SensibleAspect\" />
     <Folder Include="Simulation\Actions\" />
     <Folder Include="Simulation\Actions\Movement\" />
+    <Folder Include="StdLib\Actions\" />
+    <Folder Include="StdLib\Actions\Test\" />
   </ItemGroup>
 </Project>

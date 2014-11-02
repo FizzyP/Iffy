@@ -13,9 +13,9 @@ namespace IffySharp.Parser
 		public delegate void ParsingTask(object[] symbols, int count);
 
 		private SymbolicKnowledge knowledge;
-		Dispatch executor;
+		TerminalDispatch executor;
 
-		public Parser (Dispatch exec, SymbolicKnowledge knowledge)
+		public Parser (TerminalDispatch exec, SymbolicKnowledge knowledge)
 		{
 			this.knowledge = knowledge;
 			this.executor = exec;

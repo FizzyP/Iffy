@@ -24,6 +24,9 @@ namespace IffySharp.StdLib
 			var renderer = new SimpleRenderer ();
 
 			var sim = new IffySharp.Simulation.Simulation (worldState, renderer, world, startBlock, new StdTerminalDispatch());
+//			Simulation.Instance = sim;
+
+			Global.Simulation = sim;
 
 			//	Add vocab to player
 			var player = sim.player;
@@ -32,6 +35,8 @@ namespace IffySharp.StdLib
 			WalkTerminalCommand.addKnowledge (playerKnowledge);
 			LookTerminalCommand.addKnowledge (playerKnowledge);
 
+			//	Temporary stuff
+			TestCommand.addKnowledge (playerKnowledge);
 			playerKnowledge.associate ("self", player);
 
 			return sim;

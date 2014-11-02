@@ -29,6 +29,9 @@ namespace IffySharp.Simulation.Actions //.Movement
 			//var locState = locCause.Value;
 			var blockLocState = MapLocationAspect.getCause (indirObjBlock).Value;
 
+			var originWorldEvents = EventAspect.getCause (obj);
+			originWorldEvents.Value = new DematerializationEvent ();
+
 			//	Do the movement
 			locCause.Value = blockLocState;
 		}

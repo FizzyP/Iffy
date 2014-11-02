@@ -14,6 +14,8 @@ namespace IffySharp.Simulation
 {
 	public class Simulation
 	{
+
+
 		private WorldState state;
 		public readonly TerminalDispatch terminalDispatch;
 		public readonly Player player;
