@@ -22,7 +22,8 @@ namespace IffySharp.StdLib
 		//	Walk in a direction
 		public void dispatch(TEST tok1) {
 			//	Do something here!
-
+//			var x = new 
+//			Global.Simulation.
 		}
 
 		public bool dispatchIsValid(TEST tok1) {

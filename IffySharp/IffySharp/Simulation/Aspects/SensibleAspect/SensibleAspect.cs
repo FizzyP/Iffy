@@ -11,7 +11,12 @@ namespace IffySharp.Simulation.Aspects
 		public static WorldObjectBase imbue(WorldObjectBase obj, string description)
 		{
 			var interpretation = SensationInterpretation.new_compositeFromString (description);
-			obj [kSensationKey] = interpretation;
+
+			if (!obj.hasAttribute (kSensationKey)) {
+				obj [kSensationKey] = new SensationInterpretation[1];
+			}
+
+			((SensationInterpretation[]) obj [kSensationKey])[0] = interpretation;
 			return obj;
 		}
 

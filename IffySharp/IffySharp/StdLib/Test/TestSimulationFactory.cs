@@ -14,21 +14,10 @@ namespace IffySharp.StdLib
 		static
 		public IffySharp.Simulation.Simulation build()
 		{
-			var worldState = new WorldState ();
-			var configurator = new TestBlockConfigurator ();
-			var world = new World (configurator);
-			worldState.worlds.Add (world);
-			var startSpot = new Vector3 (0, 0, 0);
-			var startBlock = world.getBlock (startSpot);
 
-			var renderer = new SimpleRenderer ();
+			buildBaseSimulation ();
 
-			var sim = new IffySharp.Simulation.Simulation (worldState, renderer, world, startBlock, new StdTerminalDispatch());
-//			Simulation.Instance = sim;
-
-			Global.Simulation = sim;
-
-			//	Add vocab to player
+			var sim = Global.Simulation;
 			var player = sim.player;
 			var playerKnowledge = KnowledgeAspect.getKnowledge (player);
 
@@ -40,6 +29,23 @@ namespace IffySharp.StdLib
 			playerKnowledge.associate ("self", player);
 
 			return sim;
+		}
+
+
+		static private void buildBaseSimulation()
+		{
+			var worldState = new WorldState ();
+			var configurator = new TestBlockConfigurator ();
+			var world = new World (configurator);
+			worldState.worlds.Add (world);
+			var startSpot = new Vector3 (0, 0, 0);
+			var startBlock = world.getBlock (startSpot);
+
+			var renderer = new SimpleRenderer ();
+
+			var sim = new IffySharp.Simulation.Simulation (worldState, renderer, world, startBlock, new StdTerminalDispatch());
+
+			Global.Simulation = sim;
 		}
 			
 	}

@@ -110,6 +110,8 @@
     <Compile Include="StdLib\Actions\Test\TestCommand.cs" />
     <Compile Include="StdLib\Actions\Test\TestComandWords.cs" />
     <Compile Include="Simulation\Simulation\Global.cs" />
+    <Compile Include="Simulation\Actions\Movement\MaterliazationEvent.cs" />
+    <Compile Include="Simulation\Descriptions\Description.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -146,5 +148,7 @@
     <Folder Include="Simulation\Actions\Movement\" />
     <Folder Include="StdLib\Actions\" />
     <Folder Include="StdLib\Actions\Test\" />
+    <Folder Include="Simulation\Aspects\Descriptions\" />
+    <Folder Include="Simulation\Descriptions\" />
   </ItemGroup>
 </Project>
