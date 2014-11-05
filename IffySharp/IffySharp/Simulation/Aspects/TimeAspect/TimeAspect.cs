@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IffySharp.Simulation
+namespace IffySharp.Simulation.Aspects
 {
 	abstract
 	public class TimeAspect

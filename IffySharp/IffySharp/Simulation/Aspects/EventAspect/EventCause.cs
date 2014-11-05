@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IffySharp.Simulation
+namespace IffySharp.Simulation.Aspects
 {
 	public class EventCause : ValueCause<WorldEvent>
 	{

@@ -38,8 +38,7 @@ namespace IffySharp.StdLib
 			var configurator = new TestBlockConfigurator ();
 			var world = new World (configurator);
 			worldState.worlds.Add (world);
-			var startSpot = new Vector3 (0, 0, 0);
-			var startBlock = world.getBlock (startSpot);
+			var startBlock = world.getBlock (World.center);
 
 			var renderer = new SimpleRenderer ();
 

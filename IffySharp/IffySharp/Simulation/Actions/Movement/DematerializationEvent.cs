@@ -1,13 +1,20 @@
 ﻿using System;
 
 using IffySharp.Simulation;
+using IffySharp.Simulation.Aspects;
 
 namespace IffySharp.Simulation.Actions
 {
 	public class DematerializationEvent : WorldEvent
 	{
-		public DematerializationEvent ()
+		public readonly WorldObjectBase DematerializedObject;
+
+		public DematerializationEvent (WorldObjectBase obj)
 		{
+			DematerializedObject = obj;
+			InternalDescription = "(object dematerialized)";
+
+			SensibleAspect.imbue (this, "An object disappears.");
 		}
 	}
 }

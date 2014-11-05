@@ -13,8 +13,7 @@ namespace IffySharp.Simulation.Test
 		public static void test()
 		{
 			var world = new World (new ConstantBlockConfigurator());
-			var spot = new Vector3 (0, 0, 0);
-			var block = world.getBlock (spot);
+			var block = world.getBlock (World.center);
 			var eventCause = EventAspect.getCause (world);
 
 			var player = new Player (block);

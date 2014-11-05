@@ -48,19 +48,15 @@
     <Compile Include="Simulation\Utils\Vector3.cs" />
     <Compile Include="Test\IffyTest.cs" />
     <Compile Include="Simulation\Utils\ImplementationError.cs" />
-    <Compile Include="Simulation\Aspects\TimeAspect.cs" />
     <Compile Include="Simulation\World\WorldBlock.cs" />
     <Compile Include="Simulation\World\World.cs" />
-    <Compile Include="Simulation\Causes\TimeCause.cs" />
     <Compile Include="Simulation\Causes\Tests\CauseTest.cs" />
     <Compile Include="Simulation\World\Tests\WorldTest.cs" />
     <Compile Include="Simulation\World\AbstractBlockConfigurator.cs" />
     <Compile Include="Exceptions\CircularDependencyException.cs" />
     <Compile Include="Simulation\Events\WorldEvent.cs" />
-    <Compile Include="Simulation\Causes\EventCause.cs" />
     <Compile Include="Simulation\Aspects\PerceptionAspect.cs" />
     <Compile Include="Simulation\Causes\PerceptionCause.cs" />
-    <Compile Include="Simulation\Aspects\EventAspect.cs" />
     <Compile Include="Simulation\Causes\Temp\EchoPerceptionCause.cs" />
     <Compile Include="SubParser\Dispatch.cs" />
     <Compile Include="SubParser\UncaughtDispatchException.cs" />
@@ -111,7 +107,12 @@
     <Compile Include="StdLib\Actions\Test\TestComandWords.cs" />
     <Compile Include="Simulation\Simulation\Global.cs" />
     <Compile Include="Simulation\Actions\Movement\MaterliazationEvent.cs" />
-    <Compile Include="Simulation\Descriptions\Description.cs" />
+    <Compile Include="Simulation\Aspects\EventAspect\EventAspect.cs" />
+    <Compile Include="Simulation\Aspects\EventAspect\EventCause.cs" />
+    <Compile Include="Simulation\Aspects\TimeAspect\TimeAspect.cs" />
+    <Compile Include="Simulation\Aspects\TimeAspect\TimeCause.cs" />
+    <Compile Include="Simulation\Aspects\DescriptionAspect\Description.cs" />
+    <Compile Include="Simulation\Aspects\DescriptionAspect\DescriptionAspect.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -148,7 +149,8 @@
     <Folder Include="Simulation\Actions\Movement\" />
     <Folder Include="StdLib\Actions\" />
     <Folder Include="StdLib\Actions\Test\" />
-    <Folder Include="Simulation\Aspects\Descriptions\" />
-    <Folder Include="Simulation\Descriptions\" />
+    <Folder Include="Simulation\Aspects\EventAspect\" />
+    <Folder Include="Simulation\Aspects\TimeAspect\" />
+    <Folder Include="Simulation\Aspects\DescriptionAspect\" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
 ﻿using System;
+using IffySharp.Simulation.Aspects;
 
 namespace IffySharp.Simulation
 {

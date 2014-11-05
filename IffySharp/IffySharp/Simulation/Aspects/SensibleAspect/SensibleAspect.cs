@@ -10,7 +10,11 @@ namespace IffySharp.Simulation.Aspects
 		//	Naive constructor just to get us off the ground
 		public static WorldObjectBase imbue(WorldObjectBase obj, string description)
 		{
-			var interpretation = SensationInterpretation.new_compositeFromString (description);
+			//	Description delegate just returns the given string.
+			var interpretation = SensationInterpretation.new_composite (
+				(WorldObjectBase to, WorldObjectBase of)
+					=> description
+			);
 
 			if (!obj.hasAttribute (kSensationKey)) {
 				obj [kSensationKey] = new SensationInterpretation[1];

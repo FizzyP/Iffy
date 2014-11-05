@@ -16,7 +16,7 @@ namespace IffySharp.Simulation.Aspects
 
 
 		static
-		public SensationInterpretation new_compositeFromString(string description)
+		public SensationInterpretation new_composite(Description description)
 		{
 			var x = new SensationInterpretation ();
 			x [kCompositeStringSensationKey] = description;

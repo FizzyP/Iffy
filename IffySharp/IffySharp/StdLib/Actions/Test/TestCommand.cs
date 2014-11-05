@@ -2,6 +2,8 @@
 
 using IffySharp.Simulation;
 using IffySharp.Simulation.Actions;
+using IffySharp.Simulation.Aspects;
+using IffySharp.SubParser;
 
 
 namespace IffySharp.StdLib
@@ -17,13 +19,24 @@ namespace IffySharp.StdLib
 	}
 
 
-	public partial class StdTerminalDispatch
+	public partial class StdTerminalDispatch : TerminalDispatch
 	{
 		//	Walk in a direction
 		public void dispatch(TEST tok1) {
 			//	Do something here!
 //			var x = new 
-//			Global.Simulation.
+			var exec = Global.Simulation.simulationDispatch;
+			var player = Global.Simulation.player;
+
+			var playerLoc = MapLocationAspect.getMapLocationState (player);
+			var playerLocBlock = playerLoc.world.getBlock (playerLoc.position);
+
+			try {
+				Dispatch._ (exec, TELEPORT._, GOD._, player, playerLocBlock);
+			}
+			catch (Exception e) {
+				Console.Write ("whoops");
+			}
 		}
 
 		public bool dispatchIsValid(TEST tok1) {

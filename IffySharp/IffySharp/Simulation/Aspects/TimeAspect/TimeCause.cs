@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IffySharp.Simulation
+namespace IffySharp.Simulation.Aspects
 {
     public class TimeCause : ValueCause<DateTime>
     {

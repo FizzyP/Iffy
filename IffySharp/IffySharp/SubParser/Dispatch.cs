@@ -45,6 +45,14 @@ namespace IffySharp.SubParser
 				(exec as dynamic).dispatch ((dynamic) args [0], (dynamic) args[1], (dynamic) args[2]);
 				return;
 
+			case 4:
+				(exec as dynamic).dispatch ((dynamic) args [0], (dynamic) args[1], (dynamic) args[2], (dynamic) args[3]);
+				return;
+
+			case 5:
+				(exec as dynamic).dispatch ((dynamic) args [0], (dynamic) args[1], (dynamic) args[2], (dynamic) args[3], (dynamic) args[4]);
+				return;
+
 			default:
 				throw new ImplementationError ("Too many arguemnts.");
 			}
@@ -66,6 +74,13 @@ namespace IffySharp.SubParser
 			case 3:
 				return (exec as dynamic).dispatchIsValid ((dynamic) args [0], (dynamic) args[1], (dynamic) args[2]);
 
+			case 4:
+				return (exec as dynamic).dispatchIsValid ((dynamic) args [0], (dynamic) args[1], (dynamic) args[2], (dynamic) args[3]);
+
+			case 5:
+				return (exec as dynamic).dispatchIsValid ((dynamic) args [0], (dynamic) args[1], (dynamic) args[2], (dynamic) args[3], (dynamic) args[4]);
+
+
 			default:
 				throw new ImplementationError ("Too many arguemnts.");
 			}
@@ -85,6 +100,12 @@ namespace IffySharp.SubParser
 
 			case 3:
 				return (exec as dynamic).dispatchDescription ((dynamic) args [0], (dynamic) args[1], (dynamic) args[2]);
+
+			case 4:
+				return (exec as dynamic).dispatchDescription ((dynamic) args [0], (dynamic) args[1], (dynamic) args[2], (dynamic) args[3]);
+
+			case 5:
+				return (exec as dynamic).dispatchDescription ((dynamic) args [0], (dynamic) args[1], (dynamic) args[2], (dynamic) args[3], (dynamic) args[4]);
 
 			default:
 				throw new ImplementationError ("Too many arguemnts.");
@@ -120,6 +141,11 @@ namespace IffySharp.SubParser
 			Instance.dispatch (arg1, arg2, arg3, arg4, arg5, arg6);
 		}
 
+
+		public static void _(Dispatch exec, params object[] args)
+		{
+			Dispatch.dispatch (exec, args);
+		}
 	}
 }
 

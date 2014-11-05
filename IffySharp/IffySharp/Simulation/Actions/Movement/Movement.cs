@@ -2,6 +2,7 @@
 using IffySharp.Simulation;
 using IffySharp.Simulation.Aspects;
 using IffySharp.SubParser;
+using IffySharp.Simulation.Actions;
 
 namespace IffySharp.Simulation.Actions //.Movement
 {
@@ -16,10 +17,16 @@ namespace IffySharp.Simulation.Actions //.Movement
 		}
 	}
 
-	public partial class SimulationDispatch
+
+
+}
+
+namespace IffySharp.Simulation
+{
+	//	"god" moves obj to indirObjBlock in sim
+	public partial class SimulationDispatch : Dispatch
 	{
-		//	"god" moves obj to indirObjBlock in sim
-		public void dispatch(TELEPORT tok1, GOD tok2, WorldObjectBase obj, WorldBlock indirObjBlock, Simulation sim)
+		public void dispatch(TELEPORT tok1, GOD tok2, WorldObjectBase obj, WorldBlock indirObjBlock)
 		{
 			var locCause = MapLocationAspect.getCause (obj);
 			if (locCause == null) {
@@ -29,18 +36,20 @@ namespace IffySharp.Simulation.Actions //.Movement
 			//var locState = locCause.Value;
 			var blockLocState = MapLocationAspect.getCause (indirObjBlock).Value;
 
-			var originWorldEvents = EventAspect.getCause (obj);
-			originWorldEvents.Value = new DematerializationEvent ();
+			var originWorldEvents = EventAspect.getCause (locCause.Value.world);
+
+			//	Post the dematerialization event
+			originWorldEvents.Value = new DematerializationEvent (obj);
 
 			//	Do the movement
 			locCause.Value = blockLocState;
 		}
 
-		public bool dispatchIsValid(TELEPORT tok1, GOD tok2, WorldObjectBase obj, WorldBlock indirObjBlock, Simulation sim) {
+		public bool dispatchIsValid(TELEPORT tok1, GOD tok2, WorldObjectBase obj, WorldBlock indirObjBlock) {
 			return true;
 		}
 
-		public string dispatchDescription(TELEPORT tok1, GOD tok2, WorldObjectBase obj, WorldBlock indirObjBlock, Simulation sim) {
+		public string dispatchDescription(TELEPORT tok1, GOD tok2, WorldObjectBase obj, WorldBlock indirObjBlock) {
 			return "God teleports " + obj.ToString()  + " to " + indirObjBlock.ToString() + ".";
 		}
 	}
