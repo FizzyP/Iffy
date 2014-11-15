@@ -1,6 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../IffySharp/IffySharp/Simulation/Aspects/RelativeLocation/RelativeLocationAspect.cs">
+    <Files>
+      <File FileName="../IffySharp/IffySharp/Simulation/Aspects/RelativeLocation/RelativeLocationAspect.cs" Line="8" Column="8" />
+      <File FileName="../IffySharp/IffySharp/Simulation/Aspects/RelativeLocation/RelativeLocationCause.cs" Line="3" Column="3" />
+      <File FileName="../IffySharp/IffySharp/todo.txt" Line="1" Column="1" />
+      <File FileName="../IffySharp/IffySharp/Simulation/Aspects/GravitationAspect/GravityAspect.cs" Line="8" Column="8" />
+      <File FileName="../IffySharp/IffySharp/Simulation/Aspects/GravitationAspect/GravityCause.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="C:\Users\FizzyP\Documents\Projects\NOT_ORBOTIX\Iffy\IffySharp\IffySharp\StdLib\Actions\Test\TestCommand.cs" line="38" column="30" />
