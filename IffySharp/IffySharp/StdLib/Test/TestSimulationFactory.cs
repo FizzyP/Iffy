@@ -28,6 +28,8 @@ namespace IffySharp.StdLib
 			TestCommand.addKnowledge (playerKnowledge);
 			playerKnowledge.associate ("self", player);
 
+			GravityCause.markAllInstancesDirty ();
+
 			return sim;
 		}
 
@@ -38,7 +40,7 @@ namespace IffySharp.StdLib
 			var configurator = new TestBlockConfigurator ();
 			var world = new World (configurator);
 			worldState.worlds.Add (world);
-			var startBlock = world.getBlock (World.center);
+			var startBlock = world.getBlock (World.center + new Vector3(0, 0, 5));
 
 			var renderer = new SimpleRenderer ();
 

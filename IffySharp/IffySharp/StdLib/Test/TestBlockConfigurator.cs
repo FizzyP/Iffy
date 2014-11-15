@@ -17,7 +17,7 @@ namespace IffySharp.StdLib
 			//	Assume blocks have map location aspect
 			var locState = MapLocationAspect.getMapLocationState (block);
 
-			if (locState.position.x >= 10) {
+			if (locState.position.z >= 10) {
 				configureAsAir (block, world);
 
 			} else {

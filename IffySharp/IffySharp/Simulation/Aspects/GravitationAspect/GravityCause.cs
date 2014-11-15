@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using IffySharp.Simulation;
 
 namespace IffySharp.Simulation.Aspects
@@ -7,9 +8,9 @@ namespace IffySharp.Simulation.Aspects
 	{
 		WorldObjectBase target;
 		RelativeLocationLinkCause supportingLink;
+		RelativeLocationCause relLocCause;
 
-//		MapLocationCause locCause;
-//		RelativeLocationCause relLocCause;
+
 
 		public GravityCause (WorldObjectBase target)
 		{
@@ -18,14 +19,14 @@ namespace IffySharp.Simulation.Aspects
 			var locCause = MapLocationAspect.getCause (target);
 			if (locCause == null)
 				throw new ArgumentException ("Target must possess map location aspect.");
-//			addDependency (locCause);
-//
-//			relLocCause = RelativeLocationAspect.getCause (target);
-//			if (relLocCause == null)
-//				throw new ArgumentException ("Target must possess relative location aspect.");
-//			addDependency (relLocCause);
+
+			relLocCause = RelativeLocationAspect.getCause (target);
+			if (relLocCause == null)
+				throw new ArgumentException ("Target must possess relative location aspect.");
 
 			IsLazy = false;
+
+			AllCauses.Add (this);
 		}
 
 		override
@@ -50,7 +51,6 @@ namespace IffySharp.Simulation.Aspects
 		private WorldObjectBase targetIsSupported(out RelativeLocationLinkCause link)
 		{
 			//	Is it on something?
-			var relLocCause = RelativeLocationAspect.getCause (target);
 			if (relLocCause != null) {
 				foreach (var kv in relLocCause.Relations) {
 					if (kv.Value.Value.preposition == OnPreposition._) {
@@ -67,7 +67,10 @@ namespace IffySharp.Simulation.Aspects
 			var maybeGroundBlock = mapLocCause.Value.world.getBlock (feetPos);
 
 			if (maybeGroundBlock.IsSolid.Value) {
-				link = null;
+				//	Make an "on" relationship between our feet and the ground
+				link = new RelativeLocationLinkCause ();
+				link.Value = new RelativeLocationLink (OnPreposition._, SurfaceContactLinkType._);
+				relLocCause [target] = link;
 				return maybeGroundBlock;
 			}
 				
@@ -101,6 +104,19 @@ namespace IffySharp.Simulation.Aspects
 			var time = TimeAspect.getTimeCause (world);
 			var nextFallingTime = time.Time.AddSeconds (1);
 			time.enqueueCause (nextFallingTime, this);
+		}
+
+
+
+
+		public static readonly HashSet<GravityCause> AllCauses = new HashSet<GravityCause>();
+
+		public static void markAllInstancesDirty()
+		{
+			foreach (GravityCause gc in AllCauses) {
+				gc.IsDirty = false;
+				gc.IsDirty = true;
+			}
 		}
 
 	}

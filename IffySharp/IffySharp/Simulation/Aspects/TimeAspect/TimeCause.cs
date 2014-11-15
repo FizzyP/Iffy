@@ -16,8 +16,7 @@ namespace IffySharp.Simulation.Aspects
 
 		public void advanceTime(double dtSeconds)
 		{
-			DateTime time = Time;
-			time.AddSeconds(dtSeconds);
+			DateTime time = Time.AddSeconds(dtSeconds);
 
 			//	Clean up the queue
 			doQueuedCauses (time);
@@ -51,7 +50,12 @@ namespace IffySharp.Simulation.Aspects
 		void doQueuedCauses(DateTime untilTime)
 		{
 			long untilTicks = untilTime.Ticks;
-			foreach (KeyValuePair<long, List<Cause>> kv in eventQueue) {
+
+			//	Copy to avoid concurrent modification problems.
+			var eventQueueCopy = new SortedDictionary<long, List<Cause>> (eventQueue);
+
+			foreach (KeyValuePair<long, List<Cause>> kv in eventQueueCopy) {
+				DateTime causeTime = new DateTime (kv.Key);
 				if (kv.Key > untilTicks)
 					break;
 

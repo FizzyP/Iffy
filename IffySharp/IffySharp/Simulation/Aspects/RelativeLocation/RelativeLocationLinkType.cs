@@ -15,5 +15,10 @@ namespace IffySharp.Simulation.Aspects
 		public static readonly NoConnectionLinkType _ = new NoConnectionLinkType();
 	}
 
+	public class SurfaceContactLinkType : RelativeLocationLinkType
+	{
+		public static readonly SurfaceContactLinkType _ = new SurfaceContactLinkType();
+	}
+
 }
 
