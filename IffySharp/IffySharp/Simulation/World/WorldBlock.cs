@@ -8,5 +8,6 @@ namespace IffySharp.Simulation
 {
     public class WorldBlock : WorldObjectBase
     {
+		public ValueCause<bool> IsSolid = new ValueCause<bool>(false);
     }
 }

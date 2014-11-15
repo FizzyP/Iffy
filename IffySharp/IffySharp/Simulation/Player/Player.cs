@@ -13,6 +13,7 @@ namespace IffySharp.StdLib
 			var perception = new PlayerPerceptionCause (this);
 			PerceptionAspect.imbue (this, perception);
 			KnowledgeAspect.imbue (this);
+			GravityAspect.imbue (this);
 		}
 	}
 }

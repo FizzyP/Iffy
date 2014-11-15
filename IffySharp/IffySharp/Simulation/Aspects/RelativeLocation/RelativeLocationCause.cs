@@ -36,27 +36,22 @@ namespace IffySharp.Simulation.Aspects
 					if (relations.ContainsKey (obj)) {
 						var link = relations [obj];
 
+						this.removeDependency (link);
 						relations.Remove (obj);
 
-						link.Value = new RelativeLocationLink () {
-							linkType = NoConnectionLinkType._,
-							preposition = NoPreposition._
-						};
-						link.IsDirty = true;								//	Update it
+						link.Value = RelativeLocationLink.NoLink;
 					}
 				} else {
 					if (relations.ContainsKey (obj)) {
 						var link = relations [obj];
 
+						this.removeDependency (link);
 						relations.Remove (obj);
 
-						link.Value = new RelativeLocationLink () {
-							linkType = NoConnectionLinkType._,
-							preposition = NoPreposition._
-						};
-						link.IsDirty = true;								//	Update it
+						link.Value = RelativeLocationLink.NoLink;
 					}
 					relations [obj] = value;
+					addDependency (value);
 				}
 				IsDirty = true;
 			}

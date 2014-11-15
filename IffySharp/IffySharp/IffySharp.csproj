@@ -115,6 +115,7 @@
     <Compile Include="Simulation\Aspects\DescriptionAspect\DescriptionAspect.cs" />
     <Compile Include="Simulation\Aspects\RelativeLocation\RelativeLocationLink.cs" />
     <Compile Include="Simulation\Aspects\RelativeLocation\RelativeLocationLinkCause.cs" />
+    <Compile Include="Simulation\Aspects\GravitationAspect\FallingEvent.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -154,6 +155,8 @@
     <Folder Include="Simulation\Aspects\EventAspect\" />
     <Folder Include="Simulation\Aspects\TimeAspect\" />
     <Folder Include="Simulation\Aspects\DescriptionAspect\" />
+    <Folder Include="Simulation\Actions\New Folder\" />
+    <Folder Include="StdLib\Objects\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="todo.txt" />

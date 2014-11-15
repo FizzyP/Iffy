@@ -46,6 +46,14 @@ namespace IffySharp.Simulation
 
 			//	
 			var objectRelLoc = RelativeLocationAspect.getCause (obj);
+			var relations = objectRelLoc.Relations;
+
+			foreach (var kv in relations) {
+				WorldObjectBase otherObj = kv.Key;
+				RelativeLocationLinkCause link = kv.Value;
+
+				link.Value = RelativeLocationLink.NoLink;
+			}
 		}
 
 		public bool dispatchIsValid(TELEPORT tok1, GOD tok2, WorldObjectBase obj, WorldBlock indirObjBlock) {

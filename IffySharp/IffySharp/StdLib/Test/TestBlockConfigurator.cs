@@ -27,10 +27,12 @@ namespace IffySharp.StdLib
 
 		static void configureAsGround(WorldBlock block, World world, MapLocationState locState)
 		{
+			block.IsSolid.Value = true;
 		}
 
 		static void configureAsAir(WorldBlock block, World world)
 		{
+			block.IsSolid.Value = false;
 		}
 
 	}
