@@ -113,6 +113,8 @@
     <Compile Include="Simulation\Aspects\TimeAspect\TimeCause.cs" />
     <Compile Include="Simulation\Aspects\DescriptionAspect\Description.cs" />
     <Compile Include="Simulation\Aspects\DescriptionAspect\DescriptionAspect.cs" />
+    <Compile Include="Simulation\Aspects\RelativeLocation\RelativeLocationLink.cs" />
+    <Compile Include="Simulation\Aspects\RelativeLocation\RelativeLocationLinkCause.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
