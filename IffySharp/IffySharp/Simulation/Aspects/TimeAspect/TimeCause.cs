@@ -62,6 +62,8 @@ namespace IffySharp.Simulation.Aspects
 				//	Advance time to this point and invoke the cause
 				Time = new DateTime (kv.Key);
 
+				eventQueue.Remove (kv.Key);
+
 				//	The causes in the queue don't listen to Time directly.
 				//	Instead they are marked dirty here.  If they are also !IsLazy then
 				//	this will cause them to "occurr".

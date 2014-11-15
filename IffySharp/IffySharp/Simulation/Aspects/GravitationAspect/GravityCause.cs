@@ -103,6 +103,7 @@ namespace IffySharp.Simulation.Aspects
 			//	Queue more falling to happen
 			var time = TimeAspect.getTimeCause (world);
 			var nextFallingTime = time.Time.AddSeconds (1);
+			Console.WriteLine (nextFallingTime);
 			time.enqueueCause (nextFallingTime, this);
 		}
 
