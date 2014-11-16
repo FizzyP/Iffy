@@ -152,4 +152,7 @@
     <Folder Include="Simulation\Aspects\TimeAspect\" />
     <Folder Include="Simulation\Aspects\DescriptionAspect\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="todo.txt" />
+  </ItemGroup>
 </Project>

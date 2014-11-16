@@ -1,11 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\IffySharp\IffySharp\Simulation\Actions\Movement\Movement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../IffySharp/IffySharp/Simulation/Aspects/RelativeLocation/RelativeLocationAspect.cs">
     <Files>
-      <File FileName="..\IffySharp\IffySharp\Parser\Parser.cs" Line="1" Column="1" />
-      <File FileName="..\IffySharp\IffySharp\StdLib\Actions\Test\TestComandWords.cs" Line="1" Column="1" />
-      <File FileName="..\IffySharp\IffySharp\StdLib\Actions\Test\TestCommand.cs" Line="1" Column="1" />
-      <File FileName="..\IffySharp\IffySharp\Simulation\Actions\Movement\Movement.cs" Line="37" Column="37" />
+      <File FileName="../IffySharp/IffySharp/Simulation/Aspects/RelativeLocation/RelativeLocationAspect.cs" Line="8" Column="8" />
+      <File FileName="../IffySharp/IffySharp/Simulation/Aspects/RelativeLocation/RelativeLocationCause.cs" Line="3" Column="3" />
+      <File FileName="../IffySharp/IffySharp/todo.txt" Line="1" Column="1" />
+      <File FileName="../IffySharp/IffySharp/Simulation/Aspects/GravitationAspect/GravityAspect.cs" Line="8" Column="8" />
+      <File FileName="../IffySharp/IffySharp/Simulation/Aspects/GravitationAspect/GravityCause.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
