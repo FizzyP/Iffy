@@ -139,7 +139,6 @@
     <Folder Include="StdLib\" />
     <Folder Include="StdLib\Game\" />
     <Folder Include="StdLib\Test\" />
-    <Folder Include="StdLib\Words\" />
     <Folder Include="Simulation\Aspects\RelativeLocation\" />
     <Folder Include="Simulation\Aspects\GravitationAspect\" />
     <Folder Include="Simulation\Aspects\MapLocationAspect\" />

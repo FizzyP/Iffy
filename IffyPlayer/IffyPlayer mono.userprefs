@@ -1,6 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\IffySharp\IffySharp\Simulation\Actions\Movement\Movement.cs">
+    <Files>
+      <File FileName="..\IffySharp\IffySharp\Parser\Parser.cs" Line="1" Column="1" />
+      <File FileName="..\IffySharp\IffySharp\StdLib\Actions\Test\TestComandWords.cs" Line="1" Column="1" />
+      <File FileName="..\IffySharp\IffySharp\StdLib\Actions\Test\TestCommand.cs" Line="1" Column="1" />
+      <File FileName="..\IffySharp\IffySharp\Simulation\Actions\Movement\Movement.cs" Line="37" Column="37" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="C:\Users\FizzyP\Documents\Projects\NOT_ORBOTIX\Iffy\IffySharp\IffySharp\StdLib\Actions\Test\TestCommand.cs" line="38" column="30" />
