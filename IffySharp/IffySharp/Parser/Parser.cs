@@ -131,13 +131,6 @@ namespace IffySharp.Parser
 			//	TODO elimniate repeat whitespace and apply ToLower
 			return text;
 		}
-	
-
-		private static void dummyParsingTask(object[] symbols, int count)
-		{
-			Console.WriteLine (count);
-		}
-
 
 
 		private class MatchedToken {
