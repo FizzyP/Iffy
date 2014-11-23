@@ -13,7 +13,7 @@ namespace IffySharp.Simulation.Actions
 		public MaterliazationEvent (WorldObjectBase materializedObject)
 		{
 			InternalDescription = "(object materialized)";
-			SensibleAspect.imbue(this, "");
+			SensibleAspect.imbue (this, "An object appears.");
 		}
 	}
 }
