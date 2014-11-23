@@ -31,12 +31,13 @@ namespace IffySharp.StdLib
 			var playerLoc = MapLocationAspect.getMapLocationState (player);
 			var playerLocBlock = playerLoc.world.getBlock (playerLoc.position);
 
-			try {
+// TRY CATCH REMOVED TO IMPROVE ERROR DETECTION
+//			try {
 				Dispatch._ (exec, TELEPORT._, GOD._, player, playerLocBlock);
-			}
-			catch {
-				Console.Write ("whoops");
-			}
+//			}
+//			catch (Exception ex) {
+//				Console.Write ("whoops");
+//			}
 		}
 
 		public bool dispatchIsValid(TEST tok1) {

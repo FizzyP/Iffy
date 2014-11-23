@@ -1,10 +1,13 @@
-﻿using System;
+﻿// #define CATCH_INVALID_DISPATCH
+
+using System;
 using System.Linq;
 using System.Collections.Generic;
 
 using IffySharp.SubParser;
 using IffySharp.Simulation;
 using EeekSoft.Text;
+
 
 namespace IffySharp.Parser
 {
@@ -38,15 +41,20 @@ namespace IffySharp.Parser
 			}
 		}
 
+
 		private void resolveValidDispatches(List<ValidDispatch> dispatches)
 		{
 			if (dispatches.Count == 1) {
+				#if CATCH_INVALID_DISPATCH
 				try {
+				#endif
 					Dispatch.dispatch (executor, dispatches [0].dispatchArgs);
+				#if CATCH_INVALID_DISPATCH
 				}
 				catch {
 					throw new ImplementationError ("Dispatch.isValid() not backed by Dispatch.dispatch() method.");
 				}
+				#endif
 			} else if (dispatches.Count == 0) {
 				Console.WriteLine ("That sentence had no meanings.");
 			} else {

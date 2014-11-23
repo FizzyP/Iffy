@@ -46,14 +46,7 @@ namespace IffySharp.Simulation
 
 			//	Remove all relative location links
 			var objectRelLoc = RelativeLocationAspect.getCause (obj);
-			var relations = objectRelLoc.Relations;
-
-			foreach (var kv in relations) {
-				WorldObjectBase otherObj = kv.Key;
-				RelativeLocationLinkCause link = kv.Value;
-
-				link.Value = null;
-			}
+			objectRelLoc.clearAll ();
 
 			//	Post a materialization event
 			var destObjLocation = MapLocationAspect.getCause (indirObjBlock);

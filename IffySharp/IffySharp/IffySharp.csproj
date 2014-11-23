@@ -53,7 +53,6 @@
     <Compile Include="Simulation\Causes\Tests\CauseTest.cs" />
     <Compile Include="Simulation\World\Tests\WorldTest.cs" />
     <Compile Include="Simulation\World\AbstractBlockConfigurator.cs" />
-    <Compile Include="Exceptions\CircularDependencyException.cs" />
     <Compile Include="Simulation\Events\WorldEvent.cs" />
     <Compile Include="Simulation\Aspects\PerceptionAspect.cs" />
     <Compile Include="Simulation\Causes\PerceptionCause.cs" />
@@ -75,7 +74,6 @@
     <Compile Include="Simulation\Aspects\KnowledgeAspect.cs" />
     <Compile Include="StdLib\Test\TestSimulationFactory.cs" />
     <Compile Include="StdLib\Test\TestBlockConfigurator.cs" />
-    <Compile Include="Exceptions\ParsingException.cs" />
     <Compile Include="SubParser\TerminalDispatch.cs" />
     <Compile Include="StdLib\StdTerminalDispatch.cs" />
     <Compile Include="Simulation\Aspects\RelativeLocation\RelativeLocationAspect.cs" />
@@ -116,6 +114,9 @@
     <Compile Include="Simulation\Aspects\RelativeLocation\RelativeLocationLink.cs" />
     <Compile Include="Simulation\Aspects\RelativeLocation\RelativeLocationLinkCause.cs" />
     <Compile Include="Simulation\Aspects\GravitationAspect\FallingEvent.cs" />
+    <Compile Include="Debugging\Exceptions\CircularDependencyException.cs" />
+    <Compile Include="Debugging\Exceptions\ParsingException.cs" />
+    <Compile Include="Debugging\DBG.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -156,6 +157,7 @@
     <Folder Include="Simulation\Aspects\DescriptionAspect\" />
     <Folder Include="Simulation\Actions\New Folder\" />
     <Folder Include="StdLib\Objects\" />
+    <Folder Include="Debugging\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="todo.txt" />

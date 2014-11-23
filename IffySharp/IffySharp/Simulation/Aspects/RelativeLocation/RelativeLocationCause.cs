@@ -25,6 +25,14 @@ namespace IffySharp.Simulation.Aspects
 		{
 		}
 
+		public void clearAll()
+		{
+			var dictCopy = new Dictionary<WorldObjectBase, RelativeLocationLinkCause> (relations);
+			foreach (var kv in dictCopy) {
+				this [kv.Key] = null;
+			}
+		}
+
 		public RelativeLocationLinkCause this[WorldObjectBase obj]
 		{
 			get {

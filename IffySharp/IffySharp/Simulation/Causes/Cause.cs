@@ -48,6 +48,8 @@ namespace IffySharp.Simulation
                 //  Enforce invariant
                 if (_isDirty)
                 {
+					DBG.brk ();
+
 					//	First mark us and all our distant dependents as dirty.
 					var nonLazyDependents = new List<Cause> ();
 					recursivelyMarkDirtyCollectingNonLazyDependents (nonLazyDependents);

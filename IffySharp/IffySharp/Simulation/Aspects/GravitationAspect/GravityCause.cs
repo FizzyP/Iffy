@@ -8,7 +8,6 @@ namespace IffySharp.Simulation.Aspects
 	{
 		WorldObjectBase target;
 		RelativeLocationLinkCause supportingLink;
-		RelativeLocationCause relLocCause;
 
 
 
@@ -19,15 +18,18 @@ namespace IffySharp.Simulation.Aspects
 			var locCause = MapLocationAspect.getCause (target);
 			if (locCause == null)
 				throw new ArgumentException ("Target must possess map location aspect.");
+			addDependency (locCause);
 
-			relLocCause = RelativeLocationAspect.getCause (target);
+			var relLocCause = RelativeLocationAspect.getCause (target);
 			if (relLocCause == null)
 				throw new ArgumentException ("Target must possess relative location aspect.");
+//			addDependency (relLocCause);
 
 			IsLazy = false;
 
 			AllCauses.Add (this);
 		}
+
 
 		override
 		public void onUpdate()
@@ -37,19 +39,25 @@ namespace IffySharp.Simulation.Aspects
 			if (null == targetIsSupported (out link)) {
 				fall ();
 			} else {
-				if (this.supportingLink != null)
-					this.removeDependency (supportingLink);
-				supportingLink = link;
-				this.addDependency (supportingLink);
+				landOn (link);
 			}
 		}
 
+		void landOn(RelativeLocationLinkCause link)
+		{
+			if (this.supportingLink != null)
+				this.removeDependency (supportingLink);
+			supportingLink = link;
+			this.addDependency (supportingLink);
+		}
 
 
 		//	Determine if the target is supported.  Return the object if it's found and
 		//	the link if it already exists
 		private WorldObjectBase targetIsSupported(out RelativeLocationLinkCause link)
 		{
+			var relLocCause = RelativeLocationAspect.getCause (target);
+
 			//	Is it on something?
 			if (relLocCause != null) {
 				foreach (var kv in relLocCause.Relations) {
@@ -70,7 +78,7 @@ namespace IffySharp.Simulation.Aspects
 				//	Make an "on" relationship between our feet and the ground
 				link = new RelativeLocationLinkCause ();
 				link.Value = new RelativeLocationLink (OnPreposition._, SurfaceContactLinkType._);
-				relLocCause [target] = link;
+				relLocCause [maybeGroundBlock] = link;
 				return maybeGroundBlock;
 			}
 				
@@ -78,14 +86,27 @@ namespace IffySharp.Simulation.Aspects
 			return null;
 		}
 
+		//	Keep track of if we're falling or not. If we are then we don't need to "fall"
+		//	again
+		DateTime nextQueuedFallingTime = DateTime.Now.AddDays(-1);
+
+
 		private void fall()
 		{
+			var mapLocCause = MapLocationAspect.getCause (target);
+			var world = mapLocCause.Value.world;
+			var time = TimeAspect.getTimeCause (world);
+
+			//	If the object is already falling and a falling update is queued for the
+			//	future then this fall() call is redundant.  Return.
+			if (nextQueuedFallingTime > time.Time) {
+				return;
+			}
+
 			//	Our old link is useless
 			if (supportingLink != null)
 				this.removeDependency (supportingLink);
 
-			var mapLocCause = MapLocationAspect.getCause (target);
-			var world = mapLocCause.Value.world;
 			var originWorldEvents = EventAspect.getCause (world);
 
 			var pos = mapLocCause.Value.position;
@@ -96,15 +117,15 @@ namespace IffySharp.Simulation.Aspects
 				nextPos, velocity);
 
 			//	Actually move the player
+			//	MUST SET THIS BEFORE MOVING PLAYER TO SUPPRESS RECURSIVE CALLS
+			nextQueuedFallingTime = time.Time.AddSeconds (1);	
 			mapLocCause.Value = newMapLoc;
 			//	The observable event happens
 			originWorldEvents.Value = new FallingEvent ();
 
 			//	Queue more falling to happen
-			var time = TimeAspect.getTimeCause (world);
-			var nextFallingTime = time.Time.AddSeconds (1);
-			Console.WriteLine (nextFallingTime);
-			time.enqueueCause (nextFallingTime, this);
+			Console.WriteLine (nextQueuedFallingTime);
+			time.enqueueCause (nextQueuedFallingTime, this);
 		}
 
 
