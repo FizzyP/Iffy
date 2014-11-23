@@ -66,7 +66,7 @@ namespace IffySharp.Simulation
             }
         }
 
-		//	Mark this dirty but don't mark the dependent 
+		//	Mark this dirty but don't mark the given dependent dirty unless it can be reached by >= 2 steps.
 		public void markDirtyAsDependent(Cause dependent)
 		{
 			if (_isDirty)		//  Optimization

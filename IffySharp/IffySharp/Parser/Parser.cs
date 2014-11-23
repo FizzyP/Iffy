@@ -37,7 +37,7 @@ namespace IffySharp.Parser
 			// Write all results  
 			foreach(StringSearchResult r in results)
 			{
-				Console.WriteLine("Keyword='{0}', Index={1}", r.Keyword, r.Index);
+//				Console.WriteLine("Keyword='{0}', Index={1}", r.Keyword, r.Index);
 			}
 		}
 

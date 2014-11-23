@@ -16,6 +16,23 @@ namespace IffySharp.StdLib
 			knowledge.associate (TEST._.Name, TEST._);
 			knowledge.associate ("t", TEST._);
 		}
+
+		public static void test1(Dispatch exec, Player player)
+		{
+			var playerLoc = MapLocationAspect.getMapLocationState (player);
+			//			var playerLocBlock = playerLoc.world.getBlock (playerLoc.position);
+			var playerLocBlock = playerLoc.world.getBlock (World.center + new Vector3(0, 0, 1));
+
+
+			// TRY CATCH REMOVED TO IMPROVE ERROR DETECTION
+			//			try {
+			Dispatch._ (exec, TELEPORT._, GOD._, player, playerLocBlock);
+			//			}
+			//			catch (Exception ex) {
+			//				Console.Write ("whoops");
+			//			}
+
+		}
 	}
 
 
@@ -28,16 +45,7 @@ namespace IffySharp.StdLib
 			var exec = Global.Simulation.simulationDispatch;
 			var player = Global.Simulation.player;
 
-			var playerLoc = MapLocationAspect.getMapLocationState (player);
-			var playerLocBlock = playerLoc.world.getBlock (playerLoc.position);
-
-// TRY CATCH REMOVED TO IMPROVE ERROR DETECTION
-//			try {
-				Dispatch._ (exec, TELEPORT._, GOD._, player, playerLocBlock);
-//			}
-//			catch (Exception ex) {
-//				Console.Write ("whoops");
-//			}
+			TestCommand.test1 (exec, player);
 		}
 
 		public bool dispatchIsValid(TEST tok1) {
@@ -48,7 +56,6 @@ namespace IffySharp.StdLib
 			return "Test Command";
 		}
 	}
-
 
 }
 
