@@ -33,6 +33,12 @@ namespace IffySharp.Simulation
             }
         }
 
+		public void setValueAsDependent(T value, Cause dependent)
+		{
+			_value = value;
+			markDirtyAsDependent (dependent);
+		}
+
         public static implicit operator ValueCause<T>(T t)
         {
             return new ValueCause<T>(t);

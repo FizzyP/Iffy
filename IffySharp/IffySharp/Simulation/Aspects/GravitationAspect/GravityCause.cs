@@ -23,7 +23,7 @@ namespace IffySharp.Simulation.Aspects
 			var relLocCause = RelativeLocationAspect.getCause (target);
 			if (relLocCause == null)
 				throw new ArgumentException ("Target must possess relative location aspect.");
-//			addDependency (relLocCause);
+			addDependency (relLocCause);
 
 			IsLazy = false;
 
@@ -86,22 +86,13 @@ namespace IffySharp.Simulation.Aspects
 			return null;
 		}
 
-		//	Keep track of if we're falling or not. If we are then we don't need to "fall"
-		//	again
-		DateTime nextQueuedFallingTime = DateTime.Now.AddDays(-1);
-
+		DateTime nextQueuedFallingTime;
 
 		private void fall()
 		{
 			var mapLocCause = MapLocationAspect.getCause (target);
 			var world = mapLocCause.Value.world;
 			var time = TimeAspect.getTimeCause (world);
-
-			//	If the object is already falling and a falling update is queued for the
-			//	future then this fall() call is redundant.  Return.
-			if (nextQueuedFallingTime > time.Time) {
-				return;
-			}
 
 			//	Our old link is useless
 			if (supportingLink != null)
@@ -116,14 +107,16 @@ namespace IffySharp.Simulation.Aspects
 			var newMapLoc = new MapLocationState (mapLocCause.Value.world,
 				nextPos, velocity);
 
-			//	Actually move the player
-			//	MUST SET THIS BEFORE MOVING PLAYER TO SUPPRESS RECURSIVE CALLS
-			nextQueuedFallingTime = time.Time.AddSeconds (1);	
-			mapLocCause.Value = newMapLoc;
+			//	Actually move the player.  Do it in a away that suppresses this cause
+			//	being marked dirty again.
+			//	mapLocCause.Value = newMapLoc;
+			mapLocCause.setValueAsDependent (newMapLoc, this);
+
 			//	The observable event happens
 			originWorldEvents.Value = new FallingEvent ();
 
 			//	Queue more falling to happen
+			nextQueuedFallingTime = time.Time.AddSeconds (1);
 			Console.WriteLine (nextQueuedFallingTime);
 			time.enqueueCause (nextQueuedFallingTime, this);
 		}

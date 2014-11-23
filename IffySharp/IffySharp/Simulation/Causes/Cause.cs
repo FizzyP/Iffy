@@ -66,6 +66,30 @@ namespace IffySharp.Simulation
             }
         }
 
+		//	Mark this dirty but don't mark the dependent 
+		public void markDirtyAsDependent(Cause dependent)
+		{
+			if (_isDirty)		//  Optimization
+				return;
+
+			_isDirty = true;
+
+			//  Enforce invariant
+			if (_isDirty)
+			{
+				DBG.brk ();
+
+				//	First mark us and all our distant dependents as dirty.
+				var nonLazyDependents = new List<Cause> ();
+				recursivelyMarkDirtyCollectingNonLazyDependentsAvoidingDependent (nonLazyDependents, dependent);
+
+				//	All the dependents that are !IsLazy now need to be updated
+				foreach (Cause nonLazy in nonLazyDependents) {
+					nonLazy.update ();
+				}
+			}
+		}
+
 		private void recursivelyMarkDirtyCollectingNonLazyDependents(List<Cause> nonLazyDependents)
 		{
 			_isDirty = true;
@@ -76,7 +100,20 @@ namespace IffySharp.Simulation
 				cause.recursivelyMarkDirtyCollectingNonLazyDependents (nonLazyDependents);
 		}
 
-        //  If !isLazy then marking an object dirty causes it to immediately update
+		private void recursivelyMarkDirtyCollectingNonLazyDependentsAvoidingDependent(List<Cause> nonLazyDependents, Cause dependent)
+		{
+			if (this == dependent)
+				return;
+
+			_isDirty = true;
+			if (!IsLazy)
+				nonLazyDependents.Add (this);
+
+			foreach (Cause cause in dependents)
+				cause.recursivelyMarkDirtyCollectingNonLazyDependentsAvoidingDependent (nonLazyDependents, dependent);
+		}
+
+		//  If !isLazy then marking an object dirty causes it to immediately update
         private bool _isLazy = true;
         public bool IsLazy
         {
@@ -104,10 +141,6 @@ namespace IffySharp.Simulation
             //  Do whatever we're overriden to do
             onUpdate();
             IsDirty = false;
-
-            //  Every cause that depends on us is now dirty.
-            foreach (Cause cause in dependents)
-                cause.IsDirty = true;
         }
 
         public void addDependency(Cause cause)
