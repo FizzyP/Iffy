@@ -28,21 +28,37 @@ namespace IffySharp.Simulation
 	{
 		public void dispatch(TELEPORT tok1, GOD tok2, WorldObjectBase obj, WorldBlock indirObjBlock)
 		{
-			var locCause = MapLocationAspect.getCause (obj);
-			if (locCause == null) {
+			var objectLocation = MapLocationAspect.getCause (obj);
+			if (objectLocation == null) {
 				throw new InvalidDispatchException ("Cannot invoke teleport on object with no map location.");
 			}
 
 			//var locState = locCause.Value;
 			var blockLocState = MapLocationAspect.getCause (indirObjBlock).Value;
 
-			var originWorldEvents = EventAspect.getCause (locCause.Value.world);
+			var originWorldEvents = EventAspect.getCause (objectLocation.Value.world);
 
 			//	Post the dematerialization event
 			originWorldEvents.Value = new DematerializationEvent (obj);
 
-			//	Do the movement
-			locCause.Value = blockLocState;
+			//	Actually change the position state of the object
+			objectLocation.Value = blockLocState;
+
+			//	Remove all relative location links
+			var objectRelLoc = RelativeLocationAspect.getCause (obj);
+			var relations = objectRelLoc.Relations;
+
+			foreach (var kv in relations) {
+				WorldObjectBase otherObj = kv.Key;
+				RelativeLocationLinkCause link = kv.Value;
+
+				link.Value = null;
+			}
+
+			//	Post a materialization event
+			var destObjLocation = MapLocationAspect.getCause (indirObjBlock);
+			var destinationWorldEvents = EventAspect.getCause (destObjLocation.Value.world);
+			destinationWorldEvents.Value = new MaterliazationEvent (obj);
 		}
 
 		public bool dispatchIsValid(TELEPORT tok1, GOD tok2, WorldObjectBase obj, WorldBlock indirObjBlock) {

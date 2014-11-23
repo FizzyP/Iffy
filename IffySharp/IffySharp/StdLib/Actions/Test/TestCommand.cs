@@ -34,7 +34,7 @@ namespace IffySharp.StdLib
 			try {
 				Dispatch._ (exec, TELEPORT._, GOD._, player, playerLocBlock);
 			}
-			catch (Exception e) {
+			catch {
 				Console.Write ("whoops");
 			}
 		}

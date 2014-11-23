@@ -20,8 +20,23 @@ namespace IffySharp.StdLib
 		override
 		public void onEvent(WorldEvent worldEvent)
 		{
+			//	Default:
 			//	Hack just to get something on the screen.
-			this.InnerMonologue.Value = worldEvent.InternalDescription;
+			string printMe = worldEvent.InternalDescription;
+
+			//	Look for a better description
+			var sense = SensibleAspect.getInterpretations (worldEvent);
+			if (sense != null) {
+				foreach (var sensation in sense) {
+					var desription = DescriptionAspect.getDescription (SensationInterpretation.kCompositeStringSensationKey, sensation);
+					if (desription != null) {
+						printMe = desription (player, sensation);
+						break;
+					}
+				}
+			}
+
+			this.InnerMonologue.Value = printMe;
 
 			//	Determine if the event is perceived (assume yes for now)
 			//	Determine consequences of perception

@@ -11,6 +11,10 @@ namespace IffySharp.Simulation.Aspects
 	}
 
 
+	public class NoPreposition : Preposition
+	{
+		public static readonly NoPreposition _ = new NoPreposition();
+	}
 
 	public class OnPreposition : Preposition
 	{

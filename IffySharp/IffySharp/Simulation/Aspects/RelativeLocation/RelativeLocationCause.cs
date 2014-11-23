@@ -9,7 +9,7 @@ namespace IffySharp.Simulation.Aspects
 	{
 		private readonly RelativeLocationState relations = new RelativeLocationState();
 
-		public IReadOnlyDictionary<WorldObjectBase, RelativeLocationLink> Relations {
+		public IReadOnlyDictionary<WorldObjectBase, RelativeLocationLinkCause> Relations {
 			get {
 				return relations;
 			}
@@ -25,17 +25,34 @@ namespace IffySharp.Simulation.Aspects
 		{
 		}
 
-		public RelativeLocationLink this[WorldObjectBase obj]
+		public RelativeLocationLinkCause this[WorldObjectBase obj]
 		{
 			get {
 				update ();
 				return relations[obj];
 			}
 			set {
-				if (value == null)
-					relations.Remove (obj);
-				else
+				if (value == null) {
+					if (relations.ContainsKey (obj)) {
+						var link = relations [obj];
+
+						this.removeDependency (link);
+						relations.Remove (obj);
+
+						link.Value = RelativeLocationLink.NoLink;
+					}
+				} else {
+					if (relations.ContainsKey (obj)) {
+						var link = relations [obj];
+
+						this.removeDependency (link);
+						relations.Remove (obj);
+
+						link.Value = RelativeLocationLink.NoLink;
+					}
 					relations [obj] = value;
+					addDependency (value);
+				}
 				IsDirty = true;
 			}
 		}

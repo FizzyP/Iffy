@@ -13,12 +13,12 @@ namespace IffySharp.Simulation.Aspects
 			return obj;
 		}
 
-		public static DescriptionAspect getDescription(object key, WorldObjectBase obj)
+		public static Description getDescription(object key, WorldObjectBase obj)
 		{
 			if (!obj.hasAttribute (key))
 				return null;
 			else
-				return (DescriptionAspect) obj [key];
+				return (Description) obj [key];
 		}
 	}
 }

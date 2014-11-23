@@ -13,6 +13,7 @@ namespace IffySharp.Test
     {
         public static void test()
         {
+			return;
 			CauseTest.test ();
 			WorldTest.test();
 			CameraTest.test ();
