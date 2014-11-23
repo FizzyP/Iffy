@@ -71,6 +71,8 @@ namespace IffySharp.Simulation
 		{
 			if (_isDirty)		//  Optimization
 				return;
+			if (this == dependent)
+				return;
 
 			_isDirty = true;
 
@@ -99,18 +101,17 @@ namespace IffySharp.Simulation
 			foreach (Cause cause in dependents)
 				cause.recursivelyMarkDirtyCollectingNonLazyDependents (nonLazyDependents);
 		}
-
-		private void recursivelyMarkDirtyCollectingNonLazyDependentsAvoidingDependent(List<Cause> nonLazyDependents, Cause dependent)
+			
+		private void recursivelyMarkDirtyCollectingNonLazyDependentsAvoidingDependent(List<Cause> nonLazyDependents, Cause avoidMe)
 		{
-			if (this == dependent)
-				return;
-
 			_isDirty = true;
 			if (!IsLazy)
 				nonLazyDependents.Add (this);
 
-			foreach (Cause cause in dependents)
-				cause.recursivelyMarkDirtyCollectingNonLazyDependentsAvoidingDependent (nonLazyDependents, dependent);
+			foreach (Cause cause in dependents) {
+				if (cause != avoidMe)
+					cause.recursivelyMarkDirtyCollectingNonLazyDependents (nonLazyDependents);
+			}
 		}
 
 		//  If !isLazy then marking an object dirty causes it to immediately update
