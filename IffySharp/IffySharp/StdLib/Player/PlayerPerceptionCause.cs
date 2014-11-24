@@ -30,7 +30,7 @@ namespace IffySharp.StdLib
 				foreach (var sensation in sense) {
 					var desription = DescriptionAspect.getDescription (SensationInterpretation.kCompositeStringSensationKey, sensation);
 					if (desription != null) {
-						printMe = desription (player, sensation);
+						printMe = desription.get(player, sensation);
 						break;
 					}
 				}

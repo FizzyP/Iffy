@@ -7,7 +7,6 @@ namespace IffySharp.Simulation.Aspects
 		public FallingEvent ()
 		{
 			InternalDescription = "(object fell)";
-
 			SensibleAspect.imbue (this, "Soething is falling.");
 		}
 	}
