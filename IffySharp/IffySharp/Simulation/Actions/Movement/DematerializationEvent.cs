@@ -14,7 +14,7 @@ namespace IffySharp.Simulation.Actions
 			DematerializedObject = obj;
 			InternalDescription = "(object dematerialized)";
 
-			SensibleAspect.imbue (this, "An object disappears.");
+			SensibleAspect.imbue (this, SensibleAspect.getInterpretationDescription( " disappears.");
 		}
 	}
 }

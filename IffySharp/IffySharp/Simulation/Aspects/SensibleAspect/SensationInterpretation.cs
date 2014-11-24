@@ -6,7 +6,7 @@ namespace IffySharp.Simulation.Aspects
 {
 	public class SensationInterpretation : WorldObjectBase
 	{
-		public static readonly Object kCompositeStringSensationKey = new Object();
+		public static readonly Object kCompositeSensationKey = new Object();
 
 
 		private SensationInterpretation ()
@@ -19,7 +19,7 @@ namespace IffySharp.Simulation.Aspects
 		public SensationInterpretation new_composite(Description description)
 		{
 			var x = new SensationInterpretation ();
-			x [kCompositeStringSensationKey] = description;
+			x [kCompositeSensationKey] = description;
 			return x;
 		}
 	}

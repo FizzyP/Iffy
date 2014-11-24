@@ -25,16 +25,24 @@ namespace IffySharp.StdLib
 			string printMe = worldEvent.InternalDescription;
 
 			//	Look for a better description
+
+			/*
 			var sense = SensibleAspect.getInterpretations (worldEvent);
 			if (sense != null) {
 				foreach (var sensation in sense) {
-					var desription = DescriptionAspect.getDescription (SensationInterpretation.kCompositeStringSensationKey, sensation);
+					var desription = DescriptionAspect.getDescription (SensationInterpretation.kCompositeSensationKey, sensation);
 					if (desription != null) {
 						printMe = desription.get(player, sensation);
 						break;
 					}
 				}
 			}
+			*/
+
+			SensationInterpretation sensation;
+			var descr = SensibleAspect.getInterpretationDescription (worldEvent, PlayerSensationChooser, out sensation);
+			if (descr != null)
+				printMe = descr.get (player, sensation, PlayerSensationChooser);
 
 			this.InnerMonologue.Value = printMe;
 
@@ -47,6 +55,20 @@ namespace IffySharp.StdLib
 			}
 		}
 
+
+		public static readonly SensationInterpretationChooser PlayerSensationChooser = new SensationInterpretationChooser(playerSensationInterpeter);
+
+		static
+		private SensationInterpretation playerSensationInterpeter(SensationInterpretation[] sensations)
+		{
+			foreach (var sensation in sensations) {
+				var desription = DescriptionAspect.getDescription (SensationInterpretation.kCompositeSensationKey, sensation);
+				if (desription != null) {
+					return sensation;
+				}
+			}
+			return null;
+		}
 
 
 		//////////////////////////////////////////

@@ -2,11 +2,11 @@
 
 namespace IffySharp.Simulation.Aspects
 {
+//	public delegate SensationInterpretation SensationInterpretationChooser(SensationInterpretation[] interpretations);
+
 	abstract
 	public class SensibleAspect
 	{
-		public delegate SensationInterpretation SensationInterpretationChooser(SensationInterpretation[] interpretations);
-
 		private static readonly Object kSensationKey = new Object();
 
 		//	Naive constructor just to get us off the ground
@@ -23,12 +23,24 @@ namespace IffySharp.Simulation.Aspects
 			return obj;
 		}
 
-		public static SensationInterpretation[] getInterpretations(WorldObjectBase obj)
+		private static SensationInterpretation[] getInterpretations(WorldObjectBase obj)
 		{
 			if (!obj.hasAttribute (kSensationKey))
 				return null;
 			else
 				return (SensationInterpretation[]) obj [kSensationKey];
+		}
+
+		public static Description getInterpretationDescription(WorldObjectBase of, SensationInterpretationChooser chooser, out SensationInterpretation sensation)
+		{
+			if (!of.hasAttribute (kSensationKey)) {
+				sensation = null;
+				return null;
+			}
+			else {
+				sensation = chooser ((SensationInterpretation[])of [kSensationKey]);
+				return DescriptionAspect.getDescription (SensationInterpretation.kCompositeSensationKey, sensation);
+			}
 		}
 	}
 }

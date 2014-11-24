@@ -4,7 +4,9 @@ using System;
 
 namespace IffySharp.Simulation.Aspects
 {
-	public delegate string DescriptionGetter(WorldObjectBase to, WorldObjectBase of);
+	public delegate SensationInterpretation SensationInterpretationChooser(SensationInterpretation[] interpretations);
+
+	public delegate string DescriptionGetter(WorldObjectBase to, WorldObjectBase of, SensationInterpretationChooser chooser);
 
 	public class Description
 	{
@@ -16,22 +18,22 @@ namespace IffySharp.Simulation.Aspects
 		}
 
 
-		public string get(WorldObjectBase to, WorldObjectBase of)
+		public string get(WorldObjectBase to, WorldObjectBase of, SensationInterpretationChooser chooser)
 		{
-			return getter (to, of);
+			return getter (to, of, chooser);
 		}
 
 		public static implicit operator Description(string text)
 		{
 			return new Description(new DescriptionGetter(
-				(to, of)	=> 	text
+				(to, of, chooser)	=> 	text
 			));
 		}
 
 		public static Description operator+(Description left, Description right)
 		{
 			return new Description(new DescriptionGetter(
-				(to, of)	=>	left.get(to, of) + right.get(to, of)
+				(to, of, chooser)	=>	left.get(to, of, chooser) + right.get(to, of, chooser)
 			));
 		}
 	}
